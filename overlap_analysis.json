@@ -1,0 +1,86 @@
+{
+  "Data Consent and Collection": {
+    "dpdp": "Free, specific, informed, unconditional and unambiguous consent required (Section 6)",
+    "rbi": "Need-based data collection with prior and explicit consent, audit trail required (Para 12)",
+    "similarity": "Both require explicit, informed consent before collecting/processing borrower data",
+    "contradiction": "None significant - both align on consent principles"
+  },
+  "Data Protection Officer/Nodal Officer": {
+    "dpdp": "Significant Data Fiduciaries must appoint DPO based in India (Section 10)",
+    "rbi": "Designate nodal grievance redressal officers for digital lending complaints (Para 11)",
+    "similarity": "Both require dedicated officers for data/grievance handling",
+    "contradiction": "DPDP DPO has broader compliance scope; RBI officer focused on grievance redressal"
+  },
+  "Data Storage and Localization": {
+    "dpdp": "Primarily India-focused (Section 3)",
+    "rbi": "All data must be stored in India; if processed outside, must be deleted within 24 hours (Para 13)",
+    "similarity": "Both mandate data localization in India",
+    "contradiction": "RBI explicitly mandates 24-hour deletion if data processed outside; DPDP less prescriptive"
+  },
+  "Data Sharing with Third Parties": {
+    "dpdp": "Explicit consent required before sharing with other Data Fiduciaries (Section 6, 12)",
+    "rbi": "Explicit consent required before sharing with any third party except statutory cases (Para 12)",
+    "similarity": "Both require explicit consent for third-party data sharing",
+    "contradiction": "None - aligned approaches"
+  },
+  "Data Breach Notification": {
+    "dpdp": "Data Fiduciary must notify Board and affected Data Principals of breach (Section 8)",
+    "rbi": "Standards for handling security breach mentioned but less prescriptive on notification timeline",
+    "similarity": "Both require notification of data breaches",
+    "contradiction": "DPDP has explicit notification mechanism via Board; RBI defers to RE policies"
+  },
+  "Privacy Policy": {
+    "dpdp": "Not explicitly mandated in the Act itself",
+    "rbi": "Comprehensive privacy policy required, disclosed on website and DLA (Para 14)",
+    "similarity": "Both recognize importance of privacy policies",
+    "contradiction": "RBI more prescriptive on privacy policy disclosure requirements"
+  },
+  "Grievance Redressal": {
+    "dpdp": "Data Principal has right to grievance redressal (Section 13); must exhaust before approaching Board",
+    "rbi": "RE and LSP must designate nodal officers; link to RBI CMS and Sachet Portal required (Para 11)",
+    "similarity": "Both establish tiered grievance redressal with escalation to regulator",
+    "contradiction": "DPDP escalates to Data Protection Board; RBI escalates to RB-IOS"
+  },
+  "Right to Erasure": {
+    "dpdp": "Data Principal can request erasure after consent withdrawal or purpose fulfilled (Section 8, 12)",
+    "rbi": "Clear data destruction protocol required; RE responsible for ongoing data security (Para 13)",
+    "similarity": "Both recognize importance of data deletion after purpose served",
+    "contradiction": "DPDP gives Data Principal explicit right to erasure; RBI focuses on RE policy creation"
+  },
+  "Data Processors": {
+    "dpdp": "Data Processors process data on behalf of Data Fiduciary; Fiduciary remains liable (Section 8)",
+    "rbi": "LSPs are agents; RE remains fully responsible for LSP acts and omissions (Para 5)",
+    "similarity": "Both hold primary entity liable for third-party processors",
+    "contradiction": "None - aligned on accountability principles"
+  },
+  "Biometric Data": {
+    "dpdp": "No specific restriction; covered under processing rules",
+    "rbi": "RE must ensure no biometric data stored/collected unless allowed under statutory guidelines (Para 13)",
+    "similarity": "Both recognize sensitive nature of biometric data",
+    "contradiction": "RBI explicitly restricts biometric collection; DPDP treats as regular personal data"
+  },
+  "Data for Automated Decisions": {
+    "dpdp": "Data used for decisions affecting Data Principal must be complete, accurate, consistent (Section 8)",
+    "rbi": "RE must obtain economic profile (age, occupation, income) for creditworthiness assessment (Para 7)",
+    "similarity": "Both require data quality for decision-making",
+    "contradiction": "DPDP focuses on data accuracy; RBI focuses on sufficiency of assessment data"
+  },
+  "Special Categories (Children/Vulnerable)": {
+    "dpdp": "Verifiable consent from parents/guardians required; tracking/behavioral monitoring prohibited (Section 9)",
+    "rbi": "No specific provisions for children in lending guidelines (general lending principles apply)",
+    "similarity": "Both recognize need for enhanced protection in certain cases",
+    "contradiction": "DPDP has specific child protection rules; RBI digital lending doesn't address minors specifically"
+  },
+  "Consent Withdrawal": {
+    "dpdp": "Easy withdrawal with ease comparable to giving consent (Section 6)",
+    "rbi": "Borrower can opt to restrict data usage; revoke consent to collect personal data (Para 12)",
+    "similarity": "Both allow withdrawal of data consent",
+    "contradiction": "DPDP mandates ease parity; RBI focuses on options but not ease metric"
+  },
+  "Legitimate Uses Exception": {
+    "dpdp": "Certain legitimate uses (state functions, legal obligations, medical emergencies) allowed without consent (Section 7)",
+    "rbi": "Statutory/regulatory data sharing exempted from consent requirement (Para 12)",
+    "similarity": "Both allow exceptions for regulatory/statutory purposes",
+    "contradiction": "DPDP has broader list of legitimate uses; RBI narrower focus on regulatory sharing"
+  }
+}

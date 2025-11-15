@@ -1,0 +1,84 @@
+{
+  "critical_actions": [
+    {
+      "action": "Determine if company is a Significant Data Fiduciary",
+      "impact": "Determines enhanced obligations (DPO appointment, Data Auditor, DPIA)",
+      "deadline": "Immediate",
+      "section": "Section 10"
+    },
+    {
+      "action": "Audit all consent mechanisms and pre-DPDP consents",
+      "impact": "Must provide notice for pre-commencement consents per Section 5(2)",
+      "deadline": "Upon commencement",
+      "section": "Section 5"
+    },
+    {
+      "action": "Implement data localization (servers in India)",
+      "impact": "Non-compliance could result in penalties and restrictions",
+      "deadline": "Before commencement",
+      "section": "Section 3, RBI Para 13"
+    },
+    {
+      "action": "Create/update Data Processing Agreements with LSPs",
+      "impact": "Legal requirement; RE remains liable for LSP acts",
+      "deadline": "Before commencement",
+      "section": "Section 8(2)"
+    },
+    {
+      "action": "Establish breach notification mechanism",
+      "impact": "Must notify Board and Data Principals; required for penalty mitigation",
+      "deadline": "Before commencement",
+      "section": "Section 8(6)"
+    },
+    {
+      "action": "Create clear consent request templates",
+      "impact": "Non-compliance makes consent invalid and data processing unlawful",
+      "deadline": "3 months",
+      "section": "Section 5, 6"
+    },
+    {
+      "action": "Implement data subject rights portal",
+      "impact": "Data Principals can enforce rights; non-compliance attracts penalties",
+      "deadline": "6 months",
+      "section": "Section 11, 12, 13"
+    },
+    {
+      "action": "Publish privacy policy",
+      "impact": "Mandatory disclosure; part of consent process",
+      "deadline": "Immediate",
+      "section": "Section 8(9), RBI Para 14"
+    }
+  ],
+  "compliance_metrics": [
+    {
+      "metric": "% of consent records with audit trails",
+      "target": "100%",
+      "section": "Section 6(10)"
+    },
+    {
+      "metric": "Average time to process data subject requests",
+      "target": "<30 days",
+      "section": "Section 11, 12, 13"
+    },
+    {
+      "metric": "Data breach incidents reported to Board within timeframe",
+      "target": "100%",
+      "section": "Section 8(6)"
+    },
+    {
+      "metric": "LSPs with compliant Data Processing Agreements",
+      "target": "100%",
+      "section": "Section 8(2)"
+    },
+    {
+      "metric": "Personal data stored in India",
+      "target": "100%",
+      "section": "Section 3, RBI Para 13"
+    },
+    {
+      "metric": "Data deletion after purpose fulfillment",
+      "target": "100% within prescribed timeframe",
+      "section": "Section 8(7)"
+    }
+  ]
+}

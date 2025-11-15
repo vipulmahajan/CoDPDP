@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoDPDP - DPDP &amp; RBI Guidelines Compliance Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>CoDPDP</h1>
+                <p class="nav-tagline">Compliance Dashboard for Digital Personal Data Protection</p>
+            </div>
+            <div class="nav-links">
+                <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+                <button class="nav-btn" data-view="dpdp">DPDP Law</button>
+                <button class="nav-btn" data-view="rbi">RBI Guidelines</button>
+                <button class="nav-btn" data-view="overlapping">Comparison</button>
+                <button class="nav-btn" data-view="roadmap">Roadmap</button>
+                <button class="nav-btn" data-view="query">Query</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Dashboard View -->
+        <section id="dashboard-view" class="view active">
+            <div class="hero-section">
+                <h1>Welcome to CoDPDP</h1>
+                <p class="hero-subtitle">Your comprehensive guide to DPDP Act 2023 and RBI Digital Lending Guidelines compliance</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card card-clickable" data-navigate="dpdp">
+                    <div class="card__body">
+                        <div class="card-icon" style="background: var(--color-bg-1);">📜</div>
+                        <h3>DPDP Act 2023</h3>
+                        <p>Complete summary of Digital Personal Data Protection Act with chapters, sections, and obligations</p>
+                        <div class="card-stats">
+                            <span class="stat">7 Chapters</span>
+                            <span class="stat">34 Definitions</span>
+                            <span class="stat">Penalties up to ₹500 Cr</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-clickable" data-navigate="rbi">
+                    <div class="card__body">
+                        <div class="card-icon" style="background: var(--color-bg-2);">🏦</div>
+                        <h3>RBI Guidelines 2025</h3>
+                        <p>Digital Lending Directions covering RE-LSP arrangements, borrower protection, and data requirements</p>
+                        <div class="card-stats">
+                            <span class="stat">28 Paragraphs</span>
+                            <span class="stat">Enhanced Due Diligence</span>
+                            <span class="stat">Data Localization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-clickable" data-navigate="overlapping">
+                    <div class="card__body">
+                        <div class="card-icon" style="background: var(--color-bg-3);">🔄</div>
+                        <h3>Overlapping Topics</h3>
+                        <p>Side-by-side analysis of 14 overlapping topics with similarities and contradictions highlighted</p>
+                        <div class="card-stats">
+                            <span class="stat status--success">8 Aligned</span>
+                            <span class="stat status--warning">3 Different</span>
+                            <span class="stat status--error">3 Contradictions</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-clickable" data-navigate="roadmap">
+                    <div class="card__body">
+                        <div class="card-icon" style="background: var(--color-bg-4);">🗺️</div>
+                        <h3>Implementation Roadmap</h3>
+                        <p>5-phase compliance implementation plan with timelines, activities, and responsible teams</p>
+                        <div class="card-stats">
+                            <span class="stat">5 Phases</span>
+                            <span class="stat">37 Activities</span>
+                            <span class="stat">12+ Months</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="critical-section">
+                <h2>⚠️ Critical Actions Required</h2>
+                <p class="section-subtitle">Immediate compliance steps to prioritize</p>
+                <div class="critical-actions-grid" id="critical-actions-list"></div>
+            </div>
+
+            <div class="quick-links">
+                <h3>Quick Access</h3>
+                <div class="quick-links-grid">
+                    <button class="btn btn--outline" onclick="navigateToSection('dpdp', 'chapter-2')">Consent Requirements</button>
+                    <button class="btn btn--outline" onclick="navigateToSection('rbi', 'para-12')">Data Collection Rules</button>
+                    <button class="btn btn--outline" onclick="navigateToSection('overlapping', 'topic-10')">Biometric Data</button>
+                    <button class="btn btn--outline" onclick="navigateToSection('roadmap', 'phase-1')">Start Assessment</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- DPDP Law View -->
+        <section id="dpdp-view" class="view">
+            <div class="view-header">
+                <h1>Digital Personal Data Protection Act 2023</h1>
+                <p class="view-subtitle">Comprehensive summary of India's data protection law</p>
+            </div>
+
+            <div class="info-banner">
+                <strong>Status:</strong> Presidential assent received August 11, 2023. Commencement date to be notified.
+            </div>
+
+            <div class="content-section">
+                <h2>Executive Overview</h2>
+                <p>The Digital Personal Data Protection Act, 2023 establishes a comprehensive framework for protecting personal data in the digital ecosystem. It balances individual rights with legitimate data processing needs, introduces the Data Protection Board of India, and prescribes significant penalties for non-compliance.</p>
+                
+                <div class="key-principles">
+                    <h3>10 Core Principles</h3>
+                    <div class="principles-grid">
+                        <div class="principle-card"><strong>1. Lawfulness:</strong> Process only with consent or legitimate use</div>
+                        <div class="principle-card"><strong>2. Purpose Limitation:</strong> Use data only for stated purpose</div>
+                        <div class="principle-card"><strong>3. Data Minimization:</strong> Collect only necessary data</div>
+                        <div class="principle-card"><strong>4. Accuracy:</strong> Ensure data is complete and accurate</div>
+                        <div class="principle-card"><strong>5. Storage Limitation:</strong> Retain only as long as needed</div>
+                        <div class="principle-card"><strong>6. Security:</strong> Implement safeguards against breaches</div>
+                        <div class="principle-card"><strong>7. Accountability:</strong> Data Fiduciary responsible for compliance</div>
+                        <div class="principle-card"><strong>8. Transparency:</strong> Clear notice to Data Principals</div>
+                        <div class="principle-card"><strong>9. Individual Rights:</strong> Access, correction, erasure, grievance</div>
+                        <div class="principle-card"><strong>10. Special Protection:</strong> Enhanced safeguards for children</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapters-container" id="dpdp-chapters"></div>
+
+            <div class="content-section">
+                <h2>Penalties &amp; Enforcement</h2>
+                <div class="penalties-table" id="penalties-table"></div>
+            </div>
+        </section>
+
+        <!-- RBI Guidelines View -->
+        <section id="rbi-view" class="view">
+            <div class="view-header">
+                <h1>RBI Digital Lending Guidelines 2025</h1>
+                <p class="view-subtitle">Directions on Digital Lending and related matters</p>
+            </div>
+
+            <div class="info-banner">
+                <strong>Applicability:</strong> All Regulated Entities (Commercial Banks, Co-operative Banks, NBFCs, All-India FIs)
+            </div>
+
+            <div class="content-section">
+                <h2>Overview</h2>
+                <p>These directions address concerns in digital lending including unbridled activities by third parties, mis-selling, data privacy breaches, unfair business conduct, and charging of excessive interest rates. They establish standards for RE-LSP arrangements, borrower protection, and data handling.</p>
+            </div>
+
+            <div class="rbi-sections-container" id="rbi-sections"></div>
+
+            <div class="content-section">
+                <h2>Key Deadlines</h2>
+                <div class="deadline-cards">
+                    <div class="card">
+                        <div class="card__body">
+                            <h4>June 15, 2025</h4>
+                            <p>Report DLA to CICs and RBI CIMS portal</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__body">
+                            <h4>Immediate</h4>
+                            <p>Data localization compliance</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__body">
+                            <h4>120 days</h4>
+                            <p>DLG invocation deadline from default</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Overlapping Topics View -->
+        <section id="overlapping-view" class="view">
+            <div class="view-header">
+                <h1>Comparative Analysis: DPDP vs RBI Guidelines</h1>
+                <p class="view-subtitle">14 overlapping topics with alignment analysis</p>
+            </div>
+
+            <div class="filter-bar">
+                <label for="alignment-filter">Filter by alignment:</label>
+                <select id="alignment-filter" class="form-control">
+                    <option value="all">All Topics</option>
+                    <option value="green">Aligned</option>
+                    <option value="yellow">Different Focus</option>
+                    <option value="red">Contradictions</option>
+                </select>
+            </div>
+
+            <div class="legend">
+                <span class="legend-item"><span class="legend-dot" style="background: #22C55E;"></span> Aligned</span>
+                <span class="legend-item"><span class="legend-dot" style="background: #F59E0B;"></span> Different Focus</span>
+                <span class="legend-item"><span class="legend-dot" style="background: #EF4444;"></span> Contradiction</span>
+            </div>
+
+            <div class="comparison-container" id="comparison-container"></div>
+
+            <div class="content-section">
+                <h2>Comparison Matrix</h2>
+                <div class="table-container">
+                    <table class="comparison-table" id="comparison-matrix"></table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation Roadmap View -->
+        <section id="roadmap-view" class="view">
+            <div class="view-header">
+                <h1>Implementation Roadmap</h1>
+                <p class="view-subtitle">5-phase compliance implementation plan</p>
+            </div>
+
+            <div class="timeline-container" id="timeline-container"></div>
+
+            <div class="content-section">
+                <h2>Critical Actions Checklist</h2>
+                <div class="checklist-container" id="checklist-container"></div>
+            </div>
+        </section>
+
+        <!-- Query Interface View -->
+        <section id="query-view" class="view">
+            <div class="view-header">
+                <h1>Query Interface</h1>
+                <p class="view-subtitle">Search and explore compliance requirements</p>
+            </div>
+
+            <div class="search-container">
+                <input type="text" id="search-input" class="form-control search-input" placeholder="Search for topics, keywords, or ask a question...">
+                <button class="btn btn--primary" onclick="performSearch()">Search</button>
+            </div>
+
+            <div class="filter-chips" id="topic-filters"></div>
+
+            <div id="search-results" class="search-results"></div>
+
+            <div class="content-section">
+                <h2>Common Questions</h2>
+                <div class="faq-container" id="faq-container"></div>
+            </div>
+
+            <div class="content-section">
+                <h2>Browse by Category</h2>
+                <div class="category-grid">
+                    <button class="category-card" onclick="filterByCategory('consent')">Consent Management</button>
+                    <button class="category-card" onclick="filterByCategory('storage')">Data Storage</button>
+                    <button class="category-card" onclick="filterByCategory('grievance')">Grievance Redressal</button>
+                    <button class="category-card" onclick="filterByCategory('penalties')">Penalties</button>
+                    <button class="category-card" onclick="filterByCategory('lsp')">LSP Requirements</button>
+                    <button class="category-card" onclick="filterByCategory('children')">Children's Data</button>
+                    <button class="category-card" onclick="filterByCategory('breach')">Data Breaches</button>
+                    <button class="category-card" onclick="filterByCategory('rights')">Data Principal Rights</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p><strong>Disclaimer:</strong> This tool provides educational information about DPDP Act 2023 and RBI Digital Lending Guidelines. It is not legal advice. Consult qualified legal counsel for compliance guidance.</p>
+            <p class="footer-links">
+                <a href="https://www.meity.gov.in/static/uploads/2024/06/2bf1f0e9f04e6fb4f8fef35e82c42aa5.pdf" target="_blank">DPDP Act PDF</a> | 
+                <a href="https://rbi.org.in/Scripts/NotificationUser.aspx?Id=12848&Mode=0" target="_blank">RBI Guidelines</a>
+            </p>
+            <p>&copy; 2025 CoDPDP - Compliance Dashboard</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
