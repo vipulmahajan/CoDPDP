@@ -1,0 +1,2953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoDPDP - Compliance Dashboard for DPDP &amp; Digital Lending</title>
+    <style>
+:root {
+  /* Primitive Color Tokens */
+  --color-white: rgba(255, 255, 255, 1);
+  --color-black: rgba(0, 0, 0, 1);
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-gray-300: rgba(167, 169, 169, 1);
+  --color-gray-400: rgba(119, 124, 124, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-brown-600: rgba(94, 82, 64, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-slate-900: rgba(19, 52, 59, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-400: rgba(45, 166, 178, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-teal-700: rgba(26, 104, 115, 1);
+  --color-teal-800: rgba(41, 150, 161, 1);
+  --color-red-400: rgba(255, 84, 89, 1);
+  --color-red-500: rgba(192, 21, 47, 1);
+  --color-orange-400: rgba(230, 129, 97, 1);
+  --color-orange-500: rgba(168, 75, 47, 1);
+
+  /* RGB versions for opacity control */
+  --color-brown-600-rgb: 94, 82, 64;
+  --color-teal-500-rgb: 33, 128, 141;
+  --color-slate-900-rgb: 19, 52, 59;
+  --color-slate-500-rgb: 98, 108, 113;
+  --color-red-500-rgb: 192, 21, 47;
+  --color-red-400-rgb: 255, 84, 89;
+  --color-orange-500-rgb: 168, 75, 47;
+  --color-orange-400-rgb: 230, 129, 97;
+
+  /* Background color tokens (Light Mode) */
+  --color-bg-1: rgba(59, 130, 246, 0.08);
+  --color-bg-2: rgba(245, 158, 11, 0.08);
+  --color-bg-3: rgba(34, 197, 94, 0.08);
+  --color-bg-4: rgba(239, 68, 68, 0.08);
+  --color-bg-5: rgba(147, 51, 234, 0.08);
+  --color-bg-6: rgba(249, 115, 22, 0.08);
+  --color-bg-7: rgba(236, 72, 153, 0.08);
+  --color-bg-8: rgba(6, 182, 212, 0.08);
+
+  /* Semantic Color Tokens (Light Mode) */
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: var(--color-slate-900);
+  --color-text-secondary: var(--color-slate-500);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-primary-active: var(--color-teal-700);
+  --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+  --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+  --color-btn-primary-text: var(--color-cream-50);
+  --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+  --color-error: var(--color-red-500);
+  --color-success: var(--color-teal-500);
+  --color-warning: var(--color-orange-500);
+  --color-info: var(--color-slate-500);
+  --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+  --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+
+  --focus-ring: 0 0 0 3px var(--color-focus-ring);
+  --focus-outline: 2px solid var(--color-primary);
+
+  /* Typography */
+  --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-size-xs: 11px;
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-md: 14px;
+  --font-size-lg: 16px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+  --font-size-4xl: 30px;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --letter-spacing-tight: -0.01em;
+
+  /* Spacing */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-gray-400-rgb: 119, 124, 124;
+    --color-teal-300-rgb: 50, 184, 198;
+    --color-gray-300-rgb: 167, 169, 169;
+    --color-gray-200-rgb: 245, 245, 245;
+
+    --color-bg-1: rgba(29, 78, 216, 0.15);
+    --color-bg-2: rgba(180, 83, 9, 0.15);
+    --color-bg-3: rgba(21, 128, 61, 0.15);
+    --color-bg-4: rgba(185, 28, 28, 0.15);
+    --color-bg-5: rgba(107, 33, 168, 0.15);
+    --color-bg-6: rgba(194, 65, 12, 0.15);
+    --color-bg-7: rgba(190, 24, 93, 0.15);
+    --color-bg-8: rgba(8, 145, 178, 0.15);
+
+    --color-background: var(--color-charcoal-700);
+    --color-surface: var(--color-charcoal-800);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+    --color-primary: var(--color-teal-300);
+    --color-primary-hover: var(--color-teal-400);
+    --color-primary-active: var(--color-teal-800);
+    --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+    --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+    --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+    --color-error: var(--color-red-400);
+    --color-success: var(--color-teal-300);
+    --color-warning: var(--color-orange-400);
+    --color-info: var(--color-gray-300);
+    --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+    --color-btn-primary-text: var(--color-slate-900);
+    --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+    --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+  }
+}
+
+@font-face {
+  font-family: 'FKGroteskNeue';
+  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+}
+
+.header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-16) var(--space-24);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.header-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-24);
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.logo {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.tagline {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  max-width: 200px;
+}
+
+.status-badge {
+  background-color: var(--color-bg-4);
+  color: var(--color-error);
+  padding: var(--space-8) var(--space-16);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border: 1px solid rgba(var(--color-red-500-rgb), 0.25);
+}
+
+.search-container {
+  flex: 1;
+  max-width: 500px;
+}
+
+.search-box {
+  width: 100%;
+  padding: var(--space-8) var(--space-16);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-base);
+}
+
+.search-box:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--focus-ring);
+}
+
+.nav-tabs {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--space-24);
+  display: flex;
+  gap: var(--space-4);
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tab-button {
+  padding: var(--space-12) var(--space-20);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-standard);
+  font-family: var(--font-family-base);
+}
+
+.tab-button:hover {
+  color: var(--color-text);
+  background-color: var(--color-secondary);
+}
+
+.tab-button.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.main-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--space-32) var(--space-24);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.section {
+  margin-bottom: var(--space-32);
+}
+
+.section-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-16);
+  color: var(--color-text);
+}
+
+.section-subtitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-12);
+  color: var(--color-text);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-16);
+  margin-bottom: var(--space-24);
+}
+
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-12);
+}
+
+.card-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--space-8);
+}
+
+.severity-badge {
+  padding: var(--space-4) var(--space-8);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+}
+
+.severity-critical {
+  background-color: rgba(var(--color-red-500-rgb), 0.15);
+  color: var(--color-error);
+  border: 1px solid rgba(var(--color-red-500-rgb), 0.25);
+}
+
+.severity-high {
+  background-color: rgba(var(--color-orange-500-rgb), 0.15);
+  color: var(--color-warning);
+  border: 1px solid rgba(var(--color-orange-500-rgb), 0.25);
+}
+
+.severity-medium {
+  background-color: var(--color-bg-2);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.card-description {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  margin-bottom: var(--space-12);
+}
+
+.card-meta {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
+}
+
+.expandable-card {
+  cursor: pointer;
+}
+
+.card-details {
+  display: none;
+  margin-top: var(--space-16);
+  padding-top: var(--space-16);
+  border-top: 1px solid var(--color-card-border-inner);
+}
+
+.card-details.expanded {
+  display: block;
+}
+
+.card-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card-details li {
+  padding: var(--space-8) 0;
+  padding-left: var(--space-20);
+  position: relative;
+  color: var(--color-text);
+}
+
+.card-details li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+.timeline {
+  position: relative;
+  padding: var(--space-24) 0;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: var(--space-32);
+  margin-bottom: var(--space-24);
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 0;
+  bottom: -24px;
+  width: 2px;
+  background-color: var(--color-border);
+}
+
+.timeline-item:last-child::before {
+  display: none;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-surface);
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.timeline-date {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+}
+
+.timeline-label {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  margin-bottom: var(--space-8);
+}
+
+.timeline-content {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-16);
+  margin-bottom: var(--space-32);
+}
+
+.stat-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
+  text-align: center;
+}
+
+.stat-value {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-8);
+}
+
+.stat-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.conflict-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
+  margin-bottom: var(--space-16);
+}
+
+.conflict-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-12);
+}
+
+.conflict-level {
+  padding: var(--space-4) var(--space-12);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.conflict-high {
+  background-color: rgba(var(--color-red-500-rgb), 0.15);
+  color: var(--color-error);
+  border: 1px solid rgba(var(--color-red-500-rgb), 0.25);
+}
+
+.conflict-medium {
+  background-color: rgba(var(--color-orange-500-rgb), 0.15);
+  color: var(--color-warning);
+  border: 1px solid rgba(var(--color-orange-500-rgb), 0.25);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--space-16);
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: var(--space-12);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.comparison-table th {
+  background-color: var(--color-secondary);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+}
+
+.comparison-table td {
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-8) 0;
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.link-button {
+  display: inline-block;
+  padding: var(--space-8) var(--space-16);
+  background-color: var(--color-primary);
+  color: var(--color-btn-primary-text);
+  text-decoration: none;
+  border-radius: var(--radius-base);
+  font-weight: var(--font-weight-medium);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.link-button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.link-button-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+}
+
+.link-button-secondary:hover {
+  background-color: var(--color-secondary-hover);
+}
+
+.links-section {
+  display: flex;
+  gap: var(--space-12);
+  flex-wrap: wrap;
+  margin-top: var(--space-16);
+}
+
+.countdown {
+  text-align: center;
+  padding: var(--space-24);
+  background-color: var(--color-bg-4);
+  border: 1px solid rgba(var(--color-red-500-rgb), 0.25);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-24);
+}
+
+.countdown-value {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-error);
+  margin-bottom: var(--space-8);
+}
+
+.countdown-label {
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+}
+
+.info-box {
+  background-color: var(--color-bg-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
+  margin-bottom: var(--space-24);
+}
+
+.info-box-title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--space-12);
+}
+
+.info-box-content {
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+}
+
+.code-block {
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  padding: var(--space-16);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+  overflow-x: auto;
+  margin: var(--space-12) 0;
+}
+
+/* NLP Search Styles */
+.nlp-search-header {
+  text-align: center;
+  margin-bottom: var(--space-32);
+}
+
+.section-description {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-8);
+}
+
+.nlp-search-container {
+  max-width: 800px;
+  margin: 0 auto var(--space-32) auto;
+}
+
+.nlp-search-input-wrapper {
+  display: flex;
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+.nlp-search-input {
+  flex: 1;
+  padding: var(--space-16) var(--space-20);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-base);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--font-size-lg);
+  font-family: var(--font-family-base);
+  transition: border-color var(--duration-fast) var(--ease-standard);
+}
+
+.nlp-search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: var(--focus-ring);
+}
+
+.nlp-search-button {
+  padding: var(--space-16) var(--space-32);
+  background-color: var(--color-primary);
+  color: var(--color-btn-primary-text);
+  border: none;
+  border-radius: var(--radius-base);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+  font-family: var(--font-family-base);
+}
+
+.nlp-search-button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.nlp-suggestions {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: var(--shadow-md);
+  display: none;
+}
+
+.nlp-suggestions.visible {
+  display: block;
+}
+
+.nlp-suggestion-item {
+  padding: var(--space-12) var(--space-16);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-standard);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nlp-suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.nlp-suggestion-item:hover {
+  background-color: var(--color-secondary);
+}
+
+.nlp-suggestion-title {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+}
+
+.nlp-suggestion-subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-4);
+}
+
+.search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-top: none;
+  border-radius: 0 0 var(--radius-base) var(--radius-base);
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: var(--shadow-md);
+  display: none;
+  z-index: 1000;
+}
+
+.search-container {
+  flex: 1;
+  max-width: 500px;
+  position: relative;
+}
+
+.search-suggestions.visible {
+  display: block;
+}
+
+.nlp-search-results {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.nlp-result-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-24);
+  margin-bottom: var(--space-20);
+  box-shadow: var(--shadow-sm);
+}
+
+.nlp-result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-16);
+}
+
+.nlp-result-title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.relevance-badge {
+  padding: var(--space-4) var(--space-12);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+}
+
+.relevance-high {
+  background-color: rgba(var(--color-success-rgb), 0.15);
+  color: var(--color-success);
+  border: 1px solid rgba(var(--color-success-rgb), 0.25);
+}
+
+.relevance-medium {
+  background-color: rgba(var(--color-warning-rgb), 0.15);
+  color: var(--color-warning);
+  border: 1px solid rgba(var(--color-warning-rgb), 0.25);
+}
+
+.relevance-low {
+  background-color: rgba(var(--color-info-rgb), 0.15);
+  color: var(--color-info);
+  border: 1px solid rgba(var(--color-info-rgb), 0.25);
+}
+
+.nlp-answer-section {
+  background-color: var(--color-bg-1);
+  border-left: 4px solid var(--color-primary);
+  padding: var(--space-16);
+  border-radius: var(--radius-base);
+  margin-bottom: var(--space-16);
+}
+
+.nlp-answer-text {
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
+  line-height: 1.6;
+  font-weight: var(--font-weight-medium);
+}
+
+.nlp-source-section {
+  margin-bottom: var(--space-16);
+}
+
+.nlp-section-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--space-8);
+}
+
+.nlp-source-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.nlp-source-tag {
+  padding: var(--space-4) var(--space-12);
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.nlp-action-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nlp-action-item {
+  padding: var(--space-8) 0;
+  padding-left: var(--space-20);
+  position: relative;
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+}
+
+.nlp-action-item::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--color-success);
+  font-weight: var(--font-weight-bold);
+}
+
+.nlp-timeline-info {
+  background-color: var(--color-bg-2);
+  padding: var(--space-12) var(--space-16);
+  border-radius: var(--radius-base);
+  margin-bottom: var(--space-16);
+}
+
+.nlp-timeline-text {
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  font-weight: var(--font-weight-medium);
+}
+
+.nlp-learn-more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-16);
+  background-color: var(--color-primary);
+  color: var(--color-btn-primary-text);
+  text-decoration: none;
+  border-radius: var(--radius-base);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.nlp-learn-more:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.example-queries-section {
+  margin-top: var(--space-32);
+}
+
+.example-queries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-12);
+  margin-top: var(--space-16);
+}
+
+.example-query-btn {
+  padding: var(--space-12) var(--space-16);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-standard);
+  font-family: var(--font-family-base);
+}
+
+.example-query-btn:hover {
+  background-color: var(--color-secondary);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.no-results-message {
+  text-align: center;
+  padding: var(--space-32);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+}
+
+.highlight-box {
+  background-color: var(--color-bg-3);
+  border-left: 4px solid var(--color-success);
+  padding: var(--space-16);
+  border-radius: var(--radius-base);
+  margin: var(--space-16) 0;
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .nav-tabs {
+    overflow-x: auto;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  .header, .nav-tabs, .search-container {
+    display: none;
+  }
+
+  .card {
+    page-break-inside: avoid;
+  }
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">CoDPDP</div>
+                <div class="tagline">Compliance Dashboard for DPDP &amp; Digital Lending</div>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchBox" class="search-box" placeholder="Ask: How to get user consent? When must I delete data? What are TSP requirements?" autocomplete="off">
+                <div id="searchSuggestions" class="search-suggestions"></div>
+            </div>
+            <div class="status-badge" id="countdownBadge">Loading...</div>
+        </div>
+    </header>
+
+    <nav class="nav-tabs">
+        <button class="tab-button active" data-tab="overview">Overview</button>
+        <button class="tab-button" data-tab="search">🔍 NLP Search</button>
+        <button class="tab-button" data-tab="lsp">DPDP LSP</button>
+        <button class="tab-button" data-tab="tsp">DPDP TSP</button>
+        <button class="tab-button" data-tab="analysis">Comparative Analysis</button>
+    </nav>
+
+    <main class="main-content">
+        <!-- SEARCH TAB -->
+        <div id="search" class="tab-content">
+            <div class="nlp-search-header">
+                <h1 class="section-title">Natural Language Search</h1>
+                <p class="section-description">Ask questions in plain English about DPDP compliance, LSP/TSP obligations, penalties, and more.</p>
+            </div>
+
+            <div class="nlp-search-container">
+                <div class="nlp-search-input-wrapper">
+                    <input type="text" id="nlpSearchBox" class="nlp-search-input" placeholder="e.g., How do I get user consent? What security measures do we need? What are the penalties?" autocomplete="off">
+                    <button id="nlpSearchButton" class="nlp-search-button">Search</button>
+                </div>
+                <div id="nlpSearchSuggestions" class="nlp-suggestions"></div>
+            </div>
+
+            <div id="nlpSearchResults" class="nlp-search-results"></div>
+
+            <div class="example-queries-section">
+                <h3 class="section-subtitle">Example Questions You Can Ask</h3>
+                <div class="example-queries-grid">
+                    <button class="example-query-btn" data-query="How do I get user consent?">How do I get user consent?</button>
+                    <button class="example-query-btn" data-query="What security measures do we need?">What security measures do we need?</button>
+                    <button class="example-query-btn" data-query="What happens if there's a data breach?">What happens if there's a data breach?</button>
+                    <button class="example-query-btn" data-query="How long can we keep customer data?">How long can we keep customer data?</button>
+                    <button class="example-query-btn" data-query="What are my obligations as an LSP?">What are my obligations as an LSP?</button>
+                    <button class="example-query-btn" data-query="What infrastructure must TSPs have?">What infrastructure must TSPs have?</button>
+                    <button class="example-query-btn" data-query="What are the penalties for non-compliance?">What are the penalties?</button>
+                    <button class="example-query-btn" data-query="Where do DPDP and RBI guidelines conflict?">Where do DPDP and RBI conflict?</button>
+                    <button class="example-query-btn" data-query="Can we transfer data across borders?">Can we transfer data across borders?</button>
+                    <button class="example-query-btn" data-query="How do I handle children's data?">How do I handle children's data?</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- OVERVIEW TAB -->
+        <div id="overview" class="tab-content active">
+            <div class="countdown">
+                <div class="countdown-value" id="daysRemaining">Loading...</div>
+                <div class="countdown-label">Days until full DPDP enforcement (May 13, 2027)</div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Executive Summary</h2>
+                <div class="info-box">
+                    <h3 class="info-box-title">DPDP Act 2023 &amp; RBI Digital Lending Guidelines</h3>
+                    <div class="info-box-content">
+                        <p><strong>DPDP Act:</strong> India's comprehensive data protection framework establishing rights for data principals and obligations for data fiduciaries.</p>
+                        <p style="margin-top: 12px;"><strong>RBI DLG:</strong> Sector-specific regulations for digital lending platforms covering Lending Service Providers (LSP) and Technology Service Providers (TSP).</p>
+                        <p style="margin-top: 12px;"><strong>Critical Insight:</strong> Where conflicts exist, RBI DLG takes precedence as sector-specific regulation for digital lending entities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Key Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">₹150 Cr</div>
+                        <div class="stat-label">Maximum Penalty (6% revenue)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">18 Mo</div>
+                        <div class="stat-label">To Full Enforcement</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Core LSP Obligations</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Core TSP Obligations</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Implementation Timeline</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">November 13, 2025</div>
+                        <div class="timeline-label">Phase 1 - Immediate</div>
+                        <div class="timeline-content">Data Protection Board establishment, institutional framework, definitions effective</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">November 13, 2026</div>
+                        <div class="timeline-label">Phase 2 - 12 Months</div>
+                        <div class="timeline-content">Consent manager registration requirements become effective</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">May 13, 2027</div>
+                        <div class="timeline-label">Phase 3 - 18 Months (ENFORCEMENT)</div>
+                        <div class="timeline-content">All core compliance obligations fully effective. Non-compliance penalties apply.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Compliance Roadmap</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-title">Phase 0: Immediate (0-6 months)</div>
+                        <ul style="list-style: none; padding: 0; margin-top: 12px;">
+                            <li style="padding: 6px 0; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: bold;">•</span>
+                                Appoint DPO/privacy officer
+                            </li>
+                            <li style="padding: 6px 0; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: bold;">•</span>
+                                Map personal data flows
+                            </li>
+                            <li style="padding: 6px 0; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: bold;">•</span>
+                                Audit consent mechanisms
+                            </li>
+                            <li style="padding: 6px 0; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: bold;">•</span>
+                                Update vendor contracts
+                            </li>
+                            <li style="padding: 6px 0; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: bold;">•</span>
+                                Establish incident response
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Phase 1: Build (6-12 months)</div>
+                        <ul style="list-style: none; padding: 0; margin-top: 12px;">
+                            <li style="padding: 6px 0; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: bold;">•</span>
+                                Build consent management platform
+                            </li>
+                            <li style="padding: 6px 0; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: bold;">•</span>
+                                Implement granular consent workflows
+                            </li>
+                            <li style="padding: 6px 0; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: bold;">•</span>
+                                Upgrade encryption/access controls
+                            </li>
+                            <li style="padding: 6px 0; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: bold;">•</span>
+                                Update privacy notices
+                            </li>
+                            <li style="padding: 6px 0; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: bold;">•</span>
+                                Staff training on DPDP and DLG
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Phase 2: Operationalize (12-18 months)</div>
+                        <ul style="list-style: none; padding: 0; margin-top: 12px;">
+                            <li style="padding: 6px 0; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: bold;">•</span>
+                                Full DPDP operationalization
+                            </li>
+                            <li style="padding: 6px 0; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: bold;">•</span>
+                                Data subject rights portal
+                            </li>
+                            <li style="padding: 6px 0; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: bold;">•</span>
+                                DPB notification procedures
+                            </li>
+                            <li style="padding: 6px 0; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: bold;">•</span>
+                                Independent audits
+                            </li>
+                            <li style="padding: 6px 0; padding-left: 20px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--color-primary); font-weight: bold;">•</span>
+                                All DLAs updated
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Official Resources</h2>
+                <div class="links-section">
+                    <a href="https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf" target="_blank" class="link-button">DPDP Act 2023</a>
+                    <a href="https://www.meity.gov.in/static/uploads/2025/11/c56ceae6c383460ca69577428d36828b.pdf" target="_blank" class="link-button">Enforcement Timeline</a>
+                    <a href="https://www.meity.gov.in/static/uploads/2025/11/cc217843dc3bcb37b2b05bcc3b4e031f.pdf" target="_blank" class="link-button">DPB Establishment</a>
+                    <a href="https://rbi.org.in/Scripts/NotificationUser.aspx?Id=12848&Mode=0" target="_blank" class="link-button">RBI DLG Guidelines</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- LSP TAB -->
+        <div id="lsp" class="tab-content">
+            <h1 class="section-title">Implications of DPDP for Lending Service Providers (LSP)</h1>
+            
+            <div class="section">
+                <h2 class="section-subtitle">LSP Classification under DPDP</h2>
+                <div class="info-box">
+                    <div class="info-box-content">
+                        <p><strong>Data Fiduciary Status:</strong> LSPs are classified as Data Fiduciaries under DPDP Act because they determine the purpose and means of processing personal data of borrowers.</p>
+                        <p style="margin-top: 12px;"><strong>Joint Fiduciary Risks:</strong> When LSPs work with Regulated Entities (REs) like banks/NBFCs, both may be joint fiduciaries, creating shared compliance obligations and liability.</p>
+                        <p style="margin-top: 12px;"><strong>Key Functions:</strong> Sourcing customers, performing KYC, credit assessment, disbursement support, loan monitoring, and recovery operations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-subtitle">Core LSP Obligations from DPDP</h2>
+                <div class="cards-grid">
+                    <div class="card expandable-card" onclick="toggleCard(this)">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">1. Consent Management</div>
+                                <div class="card-meta">DPDP Section 6</div>
+                            </div>
+                            <span class="severity-badge severity-critical">CRITICAL</span>
+                        </div>
+                        <div class="card-description">Obtain explicit consent for each LSP function</div>
+                        <div class="card-details">
+                            <h4 style="margin-bottom: 8px; font-weight: 600;">Requirements:</h4>
+                            <ul>
+                                <li>Free, specific, informed, and unambiguous consent</li>
+                                <li>Clear affirmative action required</li>
+                                <li>Separate consent for each distinct purpose</li>
+                                <li>Easy withdrawal mechanism</li>
+                            </ul>
+                            <h4 style="margin: 16px 0 8px; font-weight: 600;">Implementation:</h4>
+                            <p>Build consent management platform or integrate with registered consent manager. Maintain audit trail of all consent interactions.</p>
+                        </div>
+                    </div>
+
+                    <div class="card expandable-card" onclick="toggleCard(this)">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">2. Data Minimization</div>
+                                <div class="card-meta">DPDP Section 8(1)</div>
+                            </div>
+                            <span class="severity-badge severity-high">HIGH</span>
+                        </div>
+                        <div class="card-description">Collect only essential data for assigned LSP role</div>
+                        <div class="card-details">
+                            <h4 style="margin-bottom: 8px; font-weight: 600;">Requirements:</h4>
+                            <ul>
+                                <li>Minimize data collection to what's necessary</li>
+                                <li>No unnecessary fields in forms</li>
+                                <li>Quarterly audit of data fields</li>
+                                <li>Document necessity for each data point</li>
+                            </ul>
+                            <h4 style="margin: 16px 0 8px; font-weight: 600;">Implementation:</h4>
+                            <p>Map each LSP function to specific data requirements. Remove optional fields. Conduct regular data minimization reviews.</p>
+                        </div>
+                    </div>
+
+                    <div class="card expandable-card" onclick="toggleCard(this)">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">3. Data Storage &amp; Retention</div>
+                                <div class="card-meta">DPDP Section 8(2)</div>
+                            </div>
+                            <span class="severity-badge severity-critical">CRITICAL</span>
+                        </div>
+                        <div class="card-description">Store data only while purpose exists</div>
+                        <div class="card-details">
+                            <h4 style="margin-bottom: 8px; font-weight: 600;">Requirements:</h4>
+                            <ul>
+                                <li>Delete personal data after purpose fulfilled</li>
+                                <li>Minimum one-year retention for audit logs</li>
+                                <li>Automated deletion policies</li>
+                                <li>Data retention register</li>
+                            </ul>
+                            <h4 style="margin: 16px 0 8px; font-weight: 600;">Implementation:</h4>
+                            <p>Implement auto-delete workflows based on purpose timeline. For lending: loan closure + regulatory retention period. Maintain deletion audit logs.</p>
+                        </div>
+                    </div>
+
+                    <div class="card expandable-card" onclick="toggleCard(this)">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">4. Security Safeguards</div>
+                                <div class="card-meta">DPDP Section 8(5)</div>
+                            </div>
+                            <span class="severity-badge severity-critical">CRITICAL</span>
+                        </div>
+                        <div class="card-description">Implement technical and organizational security measures</div>
+                        <div class="card-details">
+                            <h4 style="margin-bottom: 8px; font-weight: 600;">Requirements:</h4>
+                            <ul>
+                                <li>Encryption: AES-256 at rest, TLS 1.2+ in transit</li>
+                                <li>Role-based access controls (RBAC)</li>
+                                <li>24/7 incident response capability</li>
+                                <li>Regular security testing and penetration tests</li>
+                            </ul>
+                            <h4 style="margin: 16px 0 8px; font-weight: 600;">Implementation:</h4>
+                            <p>Deploy SIEM, MFA, EDR solutions. Conduct quarterly penetration tests. Implement zero-trust architecture where feasible.</p>
+                        </div>
+                    </div>
+
+                    <div class="card expandable-card" onclick="toggleCard(this)">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">5. Breach Notification</div>
+                                <div class="card-meta">DPDP Section 8(6)</div>
+                            </div>
+                            <span class="severity-badge severity-critical">CRITICAL</span>
+                        </div>
+                        <div class="card-description">Notify authorities and affected individuals of security breaches</div>
+                        <div class="card-details">
+                            <h4 style="margin-bottom: 8px; font-weight: 600;">Requirements:</h4>
+                            <ul>
+                                <li>Notify Regulated Entity (RE) immediately</li>
+                                <li>72-hour notification to Data Protection Board</li>
+                                <li>Notify affected individuals without delay</li>
+                                <li>Document breach response actions</li>
+                            </ul>
+                            <h4 style="margin: 16px 0 8px; font-weight: 600;">Implementation:</h4>
+                            <p>Establish 24/7 incident response team. Create breach notification templates. Conduct regular breach simulation exercises.</p>
+                        </div>
+                    </div>
+
+                    <div class="card expandable-card" onclick="toggleCard(this)">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">6. Privacy Policy</div>
+                                <div class="card-meta">DPDP Section 10</div>
+                            </div>
+                            <span class="severity-badge severity-high">HIGH</span>
+                        </div>
+                        <div class="card-description">Maintain comprehensive, accessible privacy policy</div>
+                        <div class="card-details">
+                            <h4 style="margin-bottom: 8px; font-weight: 600;">Requirements:</h4>
+                            <ul>
+                                <li>Published on website and mobile app</li>
+                                <li>Posted on Digital Lending App (DLA)</li>
+                                <li>Written in clear, simple language</li>
+                                <li>Cover all LSP functions and data practices</li>
+                            </ul>
+                            <h4 style="margin: 16px 0 8px; font-weight: 600;">Implementation:</h4>
+                            <p>Draft comprehensive privacy policy covering consent, data use, retention, security, rights, and grievance mechanisms. Update annually or when practices change.</p>
+                        </div>
+                    </div>
+
+                    <div class="card expandable-card" onclick="toggleCard(this)">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">7. Grievance Redressal</div>
+                                <div class="card-meta">DPDP Section 13</div>
+                            </div>
+                            <span class="severity-badge severity-high">HIGH</span>
+                        </div>
+                        <div class="card-description">Address data subject complaints within mandated timelines</div>
+                        <div class="card-details">
+                            <h4 style="margin-bottom: 8px; font-weight: 600;">Requirements:</h4>
+                            <ul>
+                                <li>30-day resolution SLA for complaints</li>
+                                <li>Dedicated Data Protection Officer (DPO)</li>
+                                <li>Clear escalation path to DPB</li>
+                                <li>Track and report grievance metrics</li>
+                            </ul>
+                            <h4 style="margin: 16px 0 8px; font-weight: 600;">Implementation:</h4>
+                            <p>Implement ticketing system for privacy complaints. Create tracking dashboard. Train grievance officers on DPDP rights.</p>
+                        </div>
+                    </div>
+
+                    <div class="card expandable-card" onclick="toggleCard(this)">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">8. Recovery Operations Compliance</div>
+                                <div class="card-meta">DPDP Section 8 + DLG Para 5(v)</div>
+                            </div>
+                            <span class="severity-badge severity-high">HIGH</span>
+                        </div>
+                        <div class="card-description">If acting as recovery agent, ensure DPDP and DLG compliance</div>
+                        <div class="card-details">
+                            <h4 style="margin-bottom: 8px; font-weight: 600;">Requirements:</h4>
+                            <ul>
+                                <li>Limited data use for recovery purposes only</li>
+                                <li>Explicit consent for recovery communications</li>
+                                <li>No harassment or illegal collection tactics</li>
+                                <li>Comply with RBI Fair Practices Code</li>
+                            </ul>
+                            <h4 style="margin: 16px 0 8px; font-weight: 600;">Implementation:</h4>
+                            <p>Create separate recovery agent playbook. Train agents on DPDP and DLG restrictions. Monitor and audit recovery interactions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-subtitle">Conflicts Between DPDP and RBI DLG</h2>
+                <div class="conflict-card">
+                    <div class="conflict-header">
+                        <h3 style="font-size: 16px; font-weight: 600;">Data Localization</h3>
+                        <span class="conflict-level conflict-high">HIGH CONFLICT</span>
+                    </div>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>RBI DLG Requirement</th>
+                            <th>DPDP Approach</th>
+                            <th>Resolution</th>
+                        </tr>
+                        <tr>
+                            <td>Mandatory India storage (Para 13(iv))</td>
+                            <td>Allows cross-border transfer with safeguards (Section 16)</td>
+                            <td><strong>DLG takes precedence</strong> - All lending data must stay in India</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="conflict-card">
+                    <div class="conflict-header">
+                        <h3 style="font-size: 16px; font-weight: 600;">Data Retention</h3>
+                        <span class="conflict-level conflict-high">HIGH CONFLICT</span>
+                    </div>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>RBI DLG Requirement</th>
+                            <th>DPDP Approach</th>
+                            <th>Resolution</th>
+                        </tr>
+                        <tr>
+                            <td>Minimal retention only</td>
+                            <td>Allows retention for legitimate business purposes</td>
+                            <td><strong>DLG stricter standard applies</strong> - Delete after purpose + regulatory minimum</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="conflict-card">
+                    <div class="conflict-header">
+                        <h3 style="font-size: 16px; font-weight: 600;">Biometric Data</h3>
+                        <span class="conflict-level conflict-high">HIGH CONFLICT</span>
+                    </div>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>RBI DLG Requirement</th>
+                            <th>DPDP Approach</th>
+                            <th>Resolution</th>
+                        </tr>
+                        <tr>
+                            <td>Prohibited unless mandated by law</td>
+                            <td>Allowed with explicit consent</td>
+                            <td><strong>DLG prohibition applies</strong> - LSPs cannot collect biometrics unless legally mandated</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-subtitle">LSP Compliance Tracker</h2>
+                <div class="card">
+                    <div class="card-title">Phase 1: Immediate Actions (0-6 months)</div>
+                    <div style="margin-top: 16px;">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lsp-check-1">
+                            <label for="lsp-check-1">Appoint Data Protection Officer (DPO)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lsp-check-2">
+                            <label for="lsp-check-2">Map all personal data flows across LSP functions</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lsp-check-3">
+                            <label for="lsp-check-3">Audit existing consent mechanisms</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lsp-check-4">
+                            <label for="lsp-check-4">Update vendor/TSP contracts with DPDP clauses</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lsp-check-5">
+                            <label for="lsp-check-5">Establish incident response team and procedures</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 16px;">
+                    <div class="card-title">Phase 2: Build (6-12 months)</div>
+                    <div style="margin-top: 16px;">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lsp-check-6">
+                            <label for="lsp-check-6">Build or integrate consent management platform</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lsp-check-7">
+                            <label for="lsp-check-7">Implement granular consent for each LSP function</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lsp-check-8">
+                            <label for="lsp-check-8">Upgrade encryption (AES-256) and access controls</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lsp-check-9">
+                            <label for="lsp-check-9">Update privacy policy and post on DLA</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lsp-check-10">
+                            <label for="lsp-check-10">Conduct staff training on DPDP and DLG</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 16px;">
+                    <div class="card-title">Phase 3: Operationalize (12-18 months)</div>
+                    <div style="margin-top: 16px;">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lsp-check-11">
+                            <label for="lsp-check-11">Launch data subject rights portal (access, deletion, portability)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lsp-check-12">
+                            <label for="lsp-check-12">Implement automated data retention and deletion</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lsp-check-13">
+                            <label for="lsp-check-13">Establish DPB notification procedures</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lsp-check-14">
+                            <label for="lsp-check-14">Conduct independent DPDP compliance audit</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="lsp-check-15">
+                            <label for="lsp-check-15">Update all Digital Lending Agreements (DLAs)</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TSP TAB -->
+        <div id="tsp" class="tab-content">
+            <h1 class="section-title">Implications of DPDP for Technology Service Providers (TSP)</h1>
+            
+            <div class="section">
+                <h2 class="section-subtitle">TSP Data Processing Role</h2>
+                <div class="info-box">
+                    <div class="info-box-content">
+                        <p><strong>Data Processor Status:</strong> TSPs typically act as Data Processors under DPDP, processing personal data on behalf of LSPs/REs (the Data Fiduciaries).</p>
+                        <p style="margin-top: 12px;"><strong>Fiduciary Elevation Risk:</strong> If TSP determines purpose/means of processing (beyond technical implementation), it becomes a Data Fiduciary with full compliance obligations.</p>
+                        <p style="margin-top: 12px;"><strong>Key Functions:</strong> Hosting digital lending platforms, mobile apps, databases, APIs, analytics, and providing technical infrastructure.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-subtitle">Core TSP Obligations</h2>
+                <div class="cards-grid">
+                    <div class="card expandable-card" onclick="toggleCard(this)">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">1. Data Location - India Only</div>
+                                <div class="card-meta">RBI DLG Para 13(iv) + DPDP Section 16</div>
+                            </div>
+                            <span class="severity-badge severity-critical">CRITICAL</span>
+                        </div>
+                        <div class="card-description">Store all personal data on India-only servers</div>
+                        <div class="card-details">
+                            <h4 style="margin-bottom: 8px; font-weight: 600;">Requirements:</h4>
+                            <ul>
+                                <li>Primary and backup data in Indian data centers</li>
+                                <li>No cross-border storage for lending data</li>
+                                <li>Tier-1+ certified facilities</li>
+                                <li>Geographic redundancy within India</li>
+                            </ul>
+                            <h4 style="margin: 16px 0 8px; font-weight: 600;">Implementation:</h4>
+                            <p>Deploy dedicated Indian data centers (Mumbai, Delhi, Bangalore). Use cloud regions: AWS ap-south-1, Azure Central India, GCP asia-south1.</p>
+                        </div>
+                    </div>
+
+                    <div class="card expandable-card" onclick="toggleCard(this)">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">2. Encryption Standards</div>
+                                <div class="card-meta">Industry Standard + DPDP Security</div>
+                            </div>
+                            <span class="severity-badge severity-critical">CRITICAL</span>
+                        </div>
+                        <div class="card-description">Implement strong encryption at rest and in transit</div>
+                        <div class="card-details">
+                            <h4 style="margin-bottom: 8px; font-weight: 600;">Requirements:</h4>
+                            <ul>
+                                <li>AES-256 encryption at rest</li>
+                                <li>TLS 1.2+ for data in transit</li>
+                                <li>HSM-based key management</li>
+                                <li>Regular key rotation</li>
+                            </ul>
+                            <h4 style="margin: 16px 0 8px; font-weight: 600;">Implementation:</h4>
+                            <div class="code-block">// Database encryption
+AES-256-GCM for sensitive fields
+Transparent Data Encryption (TDE)
+Column-level encryption for PII
+
+// Transport security
+TLS 1.3 preferred
+Mutual TLS for API calls
+Certificate pinning in mobile apps</div>
+                        </div>
+                    </div>
+
+                    <div class="card expandable-card" onclick="toggleCard(this)">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">3. Access Logging &amp; Audit Trails</div>
+                                <div class="card-meta">DPDP Security Requirement</div>
+                            </div>
+                            <span class="severity-badge severity-high">HIGH</span>
+                        </div>
+                        <div class="card-description">Maintain comprehensive audit trails of all data access</div>
+                        <div class="card-details">
+                            <h4 style="margin-bottom: 8px; font-weight: 600;">Requirements:</h4>
+                            <ul>
+                                <li>Log all access to personal data</li>
+                                <li>Minimum 1-year retention for logs</li>
+                                <li>Immutable audit trail</li>
+                                <li>Real-time alerting for anomalies</li>
+                            </ul>
+                            <h4 style="margin: 16px 0 8px; font-weight: 600;">Implementation:</h4>
+                            <p>Deploy SIEM solution (Splunk, ELK, Sumo Logic). Log: user ID, timestamp, data accessed, action performed, IP address, purpose.</p>
+                        </div>
+                    </div>
+
+                    <div class="card expandable-card" onclick="toggleCard(this)">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">4. Cross-border Processing</div>
+                                <div class="card-meta">RBI DLG Para 13(iv)</div>
+                            </div>
+                            <span class="severity-badge severity-high">HIGH</span>
+                        </div>
+                        <div class="card-description">Data processed abroad must be deleted within 24 hours</div>
+                        <div class="card-details">
+                            <h4 style="margin-bottom: 8px; font-weight: 600;">Requirements:</h4>
+                            <ul>
+                                <li>Any data sent abroad for processing (e.g., fraud detection) must be repatriated within 24 hours</li>
+                                <li>Foreign copies must be permanently deleted</li>
+                                <li>Documented deletion proof required</li>
+                                <li>Exception only for legally mandated transfers</li>
+                            </ul>
+                            <h4 style="margin: 16px 0 8px; font-weight: 600;">Implementation:</h4>
+                            <p>Automated data repatriation systems. Prefer India-based processing. If using foreign services (fraud detection), implement 24-hour delete automation with certification.</p>
+                        </div>
+                    </div>
+
+                    <div class="card expandable-card" onclick="toggleCard(this)">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">5. Backup &amp; Disaster Recovery</div>
+                                <div class="card-meta">3-2-1 Rule (India-only)</div>
+                            </div>
+                            <span class="severity-badge severity-high">HIGH</span>
+                        </div>
+                        <div class="card-description">Implement robust backup strategy within Indian borders</div>
+                        <div class="card-details">
+                            <h4 style="margin-bottom: 8px; font-weight: 600;">Requirements:</h4>
+                            <ul>
+                                <li>3 copies of data (production + 2 backups)</li>
+                                <li>2 different media types</li>
+                                <li>1 offsite location (within India)</li>
+                                <li>Encrypted backups with tested restoration</li>
+                            </ul>
+                            <h4 style="margin: 16px 0 8px; font-weight: 600;">Implementation:</h4>
+                            <p>Multi-region Indian failover sites (e.g., Mumbai primary, Bangalore DR, Delhi backup). Quarterly disaster recovery drills. RPO &lt; 1 hour, RTO &lt; 4 hours.</p>
+                        </div>
+                    </div>
+
+                    <div class="card expandable-card" onclick="toggleCard(this)">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">6. Breach Response Procedures</div>
+                                <div class="card-meta">DPDP Section 8(6)</div>
+                            </div>
+                            <span class="severity-badge severity-critical">CRITICAL</span>
+                        </div>
+                        <div class="card-description">24/7 incident response capability</div>
+                        <div class="card-details">
+                            <h4 style="margin-bottom: 8px; font-weight: 600;">Requirements:</h4>
+                            <ul>
+                                <li>Notify LSP/RE immediately upon breach detection</li>
+                                <li>Support LSP's 72-hour DPB notification</li>
+                                <li>Preserve forensic evidence</li>
+                                <li>Document incident response actions</li>
+                            </ul>
+                            <h4 style="margin: 16px 0 8px; font-weight: 600;">Implementation:</h4>
+                            <p>Establish Security Operations Center (SOC). Create incident response playbook. Conduct breach simulation exercises. Maintain incident response retainer with cybersecurity firm.</p>
+                        </div>
+                    </div>
+
+                    <div class="card expandable-card" onclick="toggleCard(this)">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">7. Sub-processor Management</div>
+                                <div class="card-meta">DPDP Processor Obligations</div>
+                            </div>
+                            <span class="severity-badge severity-high">HIGH</span>
+                        </div>
+                        <div class="card-description">Audit and control all sub-processors</div>
+                        <div class="card-details">
+                            <h4 style="margin-bottom: 8px; font-weight: 600;">Requirements:</h4>
+                            <ul>
+                                <li>Verify DPDP/DLG compliance of all sub-processors</li>
+                                <li>Written contracts with data protection clauses</li>
+                                <li>Regular vendor audits</li>
+                                <li>Maintain public list of sub-processors</li>
+                            </ul>
+                            <h4 style="margin: 16px 0 8px; font-weight: 600;">Implementation:</h4>
+                            <p>Vendor Risk Management (VRM) program. Annual compliance audits of critical sub-processors. Escalation for sub-processor breaches.</p>
+                        </div>
+                    </div>
+
+                    <div class="card expandable-card" onclick="toggleCard(this)">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">8. Compliance Certifications</div>
+                                <div class="card-meta">Industry Best Practice</div>
+                            </div>
+                            <span class="severity-badge severity-high">HIGH</span>
+                        </div>
+                        <div class="card-description">Maintain industry-standard security and privacy certifications</div>
+                        <div class="card-details">
+                            <h4 style="margin-bottom: 8px; font-weight: 600;">Recommended Certifications:</h4>
+                            <ul>
+                                <li>ISO 27001:2022 (Information Security)</li>
+                                <li>SOC 2 Type II (Security, Availability, Confidentiality)</li>
+                                <li>ISO 27701:2019 (Privacy Information Management)</li>
+                                <li>PCI DSS (if handling payment data)</li>
+                            </ul>
+                            <h4 style="margin: 16px 0 8px; font-weight: 600;">Implementation:</h4>
+                            <p>Conduct annual third-party audits. Maintain continuous compliance monitoring. Share compliance reports with LSP/RE clients.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-subtitle">TSP Technical Requirements</h2>
+                <div class="highlight-box">
+                    <h3 style="font-weight: 600; margin-bottom: 12px;">Infrastructure Security Checklist</h3>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tsp-infra-1">
+                        <label for="tsp-infra-1">All databases hosted in Indian data centers (Mumbai/Delhi/Bangalore)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tsp-infra-2">
+                        <label for="tsp-infra-2">Database encryption at rest (AES-256) enabled</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tsp-infra-3">
+                        <label for="tsp-infra-3">TLS 1.2+ enforced for all API endpoints</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tsp-infra-4">
+                        <label for="tsp-infra-4">Multi-factor authentication (MFA) for all admin access</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tsp-infra-5">
+                        <label for="tsp-infra-5">Role-based access control (RBAC) implemented</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tsp-infra-6">
+                        <label for="tsp-infra-6">SIEM solution deployed with real-time alerting</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tsp-infra-7">
+                        <label for="tsp-infra-7">Web Application Firewall (WAF) configured</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tsp-infra-8">
+                        <label for="tsp-infra-8">DDoS protection enabled</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tsp-infra-9">
+                        <label for="tsp-infra-9">Automated vulnerability scanning (weekly)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="tsp-infra-10">
+                        <label for="tsp-infra-10">Penetration testing (quarterly)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-subtitle">TSP Compliance Roadmap</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Months 0-3: Assessment</div>
+                        <div class="timeline-label">Infrastructure Audit &amp; Gap Analysis</div>
+                        <div class="timeline-content">
+                            <ul style="list-style: none; padding: 0; margin-top: 8px;">
+                                <li style="padding: 4px 0;">• Audit current data storage locations</li>
+                                <li style="padding: 4px 0;">• Identify cross-border data flows</li>
+                                <li style="padding: 4px 0;">• Review encryption implementations</li>
+                                <li style="padding: 4px 0;">• Assess sub-processor compliance</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Months 3-9: Migration</div>
+                        <div class="timeline-label">India Data Localization &amp; Security Upgrades</div>
+                        <div class="timeline-content">
+                            <ul style="list-style: none; padding: 0; margin-top: 8px;">
+                                <li style="padding: 4px 0;">• Migrate all data to Indian data centers</li>
+                                <li style="padding: 4px 0;">• Implement AES-256 encryption at rest</li>
+                                <li style="padding: 4px 0;">• Deploy SIEM and logging infrastructure</li>
+                                <li style="padding: 4px 0;">• Set up disaster recovery in India</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Months 9-15: Certification</div>
+                        <div class="timeline-label">Compliance Certification &amp; Audit</div>
+                        <div class="timeline-content">
+                            <ul style="list-style: none; padding: 0; margin-top: 8px;">
+                                <li style="padding: 4px 0;">• Pursue ISO 27001 certification</li>
+                                <li style="padding: 4px 0;">• Complete SOC 2 Type II audit</li>
+                                <li style="padding: 4px 0;">• ISO 27701 privacy certification</li>
+                                <li style="padding: 4px 0;">• Document compliance for clients</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Months 15-18: Operations</div>
+                        <div class="timeline-label">Continuous Compliance &amp; Monitoring</div>
+                        <div class="timeline-content">
+                            <ul style="list-style: none; padding: 0; margin-top: 8px;">
+                                <li style="padding: 4px 0;">• 24/7 SOC operations</li>
+                                <li style="padding: 4px 0;">• Quarterly security assessments</li>
+                                <li style="padding: 4px 0;">• Incident response drills</li>
+                                <li style="padding: 4px 0;">• Annual compliance reviews</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ANALYSIS TAB -->
+        <div id="analysis" class="tab-content">
+            <h1 class="section-title">Comparative Analysis: DPDP Act &amp; RBI DLG</h1>
+            
+            <div class="section">
+                <h2 class="section-subtitle">Areas of Alignment</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-title">Consent Requirements</div>
+                        <div class="card-description">Both DPDP and DLG require explicit, informed consent with audit trails.</div>
+                        <div style="margin-top: 12px; padding: 12px; background-color: var(--color-bg-3); border-radius: var(--radius-base);">
+                            <strong>DPDP:</strong> Section 6 mandates free, specific, informed, and unambiguous consent.
+                        </div>
+                        <div style="margin-top: 8px; padding: 12px; background-color: var(--color-bg-3); border-radius: var(--radius-base);">
+                            <strong>DLG:</strong> Para 6 requires explicit consent for each digital lending service.
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title">Breach Notification</div>
+                        <div class="card-description">Both frameworks require immediate authority notification of data breaches.</div>
+                        <div style="margin-top: 12px; padding: 12px; background-color: var(--color-bg-3); border-radius: var(--radius-base);">
+                            <strong>DPDP:</strong> 72-hour notification to Data Protection Board.
+                        </div>
+                        <div style="margin-top: 8px; padding: 12px; background-color: var(--color-bg-3); border-radius: var(--radius-base);">
+                            <strong>DLG:</strong> Immediate notification to RBI and affected borrowers.
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title">Data Security</div>
+                        <div class="card-description">Both mandate technical and organizational security safeguards.</div>
+                        <div style="margin-top: 12px; padding: 12px; background-color: var(--color-bg-3); border-radius: var(--radius-base);">
+                            <strong>DPDP:</strong> Section 8(5) requires reasonable security safeguards.
+                        </div>
+                        <div style="margin-top: 8px; padding: 12px; background-color: var(--color-bg-3); border-radius: var(--radius-base);">
+                            <strong>DLG:</strong> Para 13 mandates encryption, access controls, audit trails.
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title">Grievance Redressal</div>
+                        <div class="card-description">Both establish grievance mechanisms for affected individuals.</div>
+                        <div style="margin-top: 12px; padding: 12px; background-color: var(--color-bg-3); border-radius: var(--radius-base);">
+                            <strong>DPDP:</strong> Section 13 provides data subject complaint rights.
+                        </div>
+                        <div style="margin-top: 8px; padding: 12px; background-color: var(--color-bg-3); border-radius: var(--radius-base);">
+                            <strong>DLG:</strong> Para 10 requires nodal grievance officer.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-subtitle">Critical Conflicts &amp; Resolutions</h2>
+                
+                <div class="conflict-card">
+                    <div class="conflict-header">
+                        <h3 style="font-size: 18px; font-weight: 600;">1. Data Localization</h3>
+                        <span class="conflict-level conflict-high">HIGH CONFLICT</span>
+                    </div>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 33%;">RBI DLG</th>
+                                <th style="width: 33%;">DPDP Act</th>
+                                <th style="width: 34%;">Resolution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mandatory India storage (Para 13(iv)). All data must be stored only in India.</td>
+                                <td>Allows cross-border transfer to specified countries with safeguards (Section 16).</td>
+                                <td><strong>DLG takes precedence.</strong> For digital lending, all personal data must remain in India. No cross-border transfers permitted.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="conflict-card">
+                    <div class="conflict-header">
+                        <h3 style="font-size: 18px; font-weight: 600;">2. Data Retention Period</h3>
+                        <span class="conflict-level conflict-high">HIGH CONFLICT</span>
+                    </div>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 33%;">RBI DLG</th>
+                                <th style="width: 33%;">DPDP Act</th>
+                                <th style="width: 34%;">Resolution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Minimal retention - only as long as needed for purpose. Delete promptly after loan closure.</td>
+                                <td>Allows retention for legitimate business purposes beyond primary purpose (Section 8(2)).</td>
+                                <td><strong>Apply stricter DLG standard.</strong> Delete personal data after loan closure + regulatory retention period (typically audit requirements).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="conflict-card">
+                    <div class="conflict-header">
+                        <h3 style="font-size: 18px; font-weight: 600;">3. Biometric Data Collection</h3>
+                        <span class="conflict-level conflict-high">HIGH CONFLICT</span>
+                    </div>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 33%;">RBI DLG</th>
+                                <th style="width: 33%;">DPDP Act</th>
+                                <th style="width: 34%;">Resolution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Prohibited unless mandated by law or regulation (Para 8(iii)).</td>
+                                <td>Allowed as sensitive personal data with explicit consent and heightened safeguards.</td>
+                                <td><strong>DLG prohibition applies.</strong> LSPs/TSPs cannot collect biometrics (fingerprints, face data) unless legally mandated for KYC/eKYC.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="conflict-card">
+                    <div class="conflict-header">
+                        <h3 style="font-size: 18px; font-weight: 600;">4. Third-Party Data Sharing</h3>
+                        <span class="conflict-level conflict-medium">MODERATE CONFLICT</span>
+                    </div>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 33%;">RBI DLG</th>
+                                <th style="width: 33%;">DPDP Act</th>
+                                <th style="width: 34%;">Resolution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sharing with third parties requires explicit consent. No data sharing for marketing without consent.</td>
+                                <td>Data sharing permitted with consent or for specified legitimate purposes.</td>
+                                <td><strong>Harmonized approach.</strong> For lending data, obtain explicit consent before sharing with any third party (credit bureaus, co-lenders, etc.).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="conflict-card">
+                    <div class="conflict-header">
+                        <h3 style="font-size: 18px; font-weight: 600;">5. Automated Decision-Making</h3>
+                        <span class="conflict-level conflict-medium">MODERATE CONFLICT</span>
+                    </div>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 33%;">RBI DLG</th>
+                                <th style="width: 33%;">DPDP Act</th>
+                                <th style="width: 34%;">Resolution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>No specific provision on automated lending decisions. RBI expects human oversight.</td>
+                                <td>Section 9 - data principals have right to object to automated decision-making.</td>
+                                <td><strong>Implement hybrid model.</strong> Use automated credit scoring but allow human review for rejections. Provide explanation for automated rejections.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="conflict-card">
+                    <div class="conflict-header">
+                        <h3 style="font-size: 18px; font-weight: 600;">6. Data Portability</h3>
+                        <span class="conflict-level conflict-medium">MODERATE CONFLICT</span>
+                    </div>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 33%;">RBI DLG</th>
+                                <th style="width: 33%;">DPDP Act</th>
+                                <th style="width: 34%;">Resolution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>No explicit data portability requirement in DLG.</td>
+                                <td>Section 12 - borrowers have right to obtain their data in machine-readable format.</td>
+                                <td><strong>DPDP right applies.</strong> LSPs must provide borrower data in portable format (JSON/CSV) upon request within reasonable timeframe.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="conflict-card">
+                    <div class="conflict-header">
+                        <h3 style="font-size: 18px; font-weight: 600;">7. Consent Withdrawal</h3>
+                        <span class="conflict-level conflict-medium">MODERATE CONFLICT</span>
+                    </div>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 33%;">RBI DLG</th>
+                                <th style="width: 33%;">DPDP Act</th>
+                                <th style="width: 34%;">Resolution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Borrowers can withdraw consent, but active loan obligations continue.</td>
+                                <td>Section 6(6) - data principals can withdraw consent easily. Processing must stop unless legal obligation exists.</td>
+                                <td><strong>Nuanced approach.</strong> Allow consent withdrawal but inform borrower that loan servicing requires minimum data processing. Can't withdraw for legally required processing (KYC, AML).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="conflict-card">
+                    <div class="conflict-header">
+                        <h3 style="font-size: 18px; font-weight: 600;">8. Children's Data</h3>
+                        <span class="conflict-level conflict-high">HIGH CONFLICT</span>
+                    </div>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 33%;">RBI DLG</th>
+                                <th style="width: 33%;">DPDP Act</th>
+                                <th style="width: 34%;">Resolution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lending to minors generally prohibited except education loans with parental consent.</td>
+                                <td>Section 7 - heightened protection for children (under 18). Parental consent required for processing.</td>
+                                <td><strong>Both align - no conflict.</strong> Don't lend to minors without parental/guardian consent. Implement age verification. For education loans, obtain parental consent as required by both frameworks.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-subtitle">Implementation Quick-Start</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-title">For LSPs: First 90 Days</div>
+                        <ol style="margin: 12px 0 0 20px; padding: 0;">
+                            <li style="padding: 6px 0;">Appoint DPO and privacy team</li>
+                            <li style="padding: 6px 0;">Map all personal data flows</li>
+                            <li style="padding: 6px 0;">Audit consent mechanisms</li>
+                            <li style="padding: 6px 0;">Update vendor contracts (TSPs)</li>
+                            <li style="padding: 6px 0;">Draft/update privacy policy</li>
+                            <li style="padding: 6px 0;">Implement data retention policies</li>
+                            <li style="padding: 6px 0;">Set up incident response team</li>
+                            <li style="padding: 6px 0;">Train staff on DPDP/DLG</li>
+                        </ol>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-title">For TSPs: First 90 Days</div>
+                        <ol style="margin: 12px 0 0 20px; padding: 0;">
+                            <li style="padding: 6px 0;">Audit data storage locations</li>
+                            <li style="padding: 6px 0;">Plan India data center migration</li>
+                            <li style="padding: 6px 0;">Implement AES-256 encryption</li>
+                            <li style="padding: 6px 0;">Deploy SIEM and logging</li>
+                            <li style="padding: 6px 0;">Establish SOC (24/7 monitoring)</li>
+                            <li style="padding: 6px 0;">Review sub-processor compliance</li>
+                            <li style="padding: 6px 0;">Update DPA templates</li>
+                            <li style="padding: 6px 0;">Initiate ISO 27001 certification</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-subtitle">Common Pitfalls to Avoid</h2>
+                <div class="cards-grid">
+                    <div class="card" style="border-left: 4px solid var(--color-error);">
+                        <div class="card-title" style="color: var(--color-error);">❌ Bundled Consent</div>
+                        <p style="margin-top: 8px; color: var(--color-text);">Don't bundle multiple purposes into one consent. DPDP requires separate consent for each distinct purpose.</p>
+                    </div>
+
+                    <div class="card" style="border-left: 4px solid var(--color-error);">
+                        <div class="card-title" style="color: var(--color-error);">❌ Indefinite Retention</div>
+                        <p style="margin-top: 8px; color: var(--color-text);">Don't keep data "just in case." DLG mandates minimal retention. Delete after purpose + regulatory period.</p>
+                    </div>
+
+                    <div class="card" style="border-left: 4px solid var(--color-error);">
+                        <div class="card-title" style="color: var(--color-error);">❌ Foreign Cloud Storage</div>
+                        <p style="margin-top: 8px; color: var(--color-text);">Don't use foreign cloud regions for lending data. DLG requires India-only storage.</p>
+                    </div>
+
+                    <div class="card" style="border-left: 4px solid var(--color-error);">
+                        <div class="card-title" style="color: var(--color-error);">❌ Unaudited Vendors</div>
+                        <p style="margin-top: 8px; color: var(--color-text);">Don't assume TSP compliance. Conduct regular vendor audits and verify certifications.</p>
+                    </div>
+
+                    <div class="card" style="border-left: 4px solid var(--color-error);">
+                        <div class="card-title" style="color: var(--color-error);">❌ Complex Privacy Policies</div>
+                        <p style="margin-top: 8px; color: var(--color-text);">Don't write legal jargon. DPDP requires clear, simple language accessible to ordinary users.</p>
+                    </div>
+
+                    <div class="card" style="border-left: 4px solid var(--color-error);">
+                        <div class="card-title" style="color: var(--color-error);">❌ Ignoring Breach Response</div>
+                        <p style="margin-top: 8px; color: var(--color-text);">Don't delay breach notification. Both frameworks require immediate reporting - establish 24/7 response capability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Tab Navigation
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabName = button.getAttribute('data-tab');
+                
+                // Remove active class from all tabs and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                button.classList.add('active');
+                document.getElementById(tabName).classList.add('active');
+            });
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const enforcementDate = new Date('2027-05-13T00:00:00+05:30');
+            const now = new Date();
+            const diff = enforcementDate - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            
+            document.getElementById('daysRemaining').textContent = days;
+            document.getElementById('countdownBadge').textContent = `${days} days to enforcement`;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 3600000); // Update every hour
+
+        // Expandable Cards
+        function toggleCard(card) {
+            const details = card.querySelector('.card-details');
+            if (details) {
+                details.classList.toggle('expanded');
+            }
+        }
+
+        // Enhanced Search Functionality
+        const searchBox = document.getElementById('searchBox');
+        let searchIndex = [];
+        let currentMatches = [];
+
+        // Build comprehensive search index
+        function buildSearchIndex() {
+            searchIndex = [];
+            
+            // Index all searchable elements
+            const searchableSelectors = [
+                '.card',
+                '.info-box',
+                '.conflict-card',
+                '.timeline-item',
+                '.stat-card',
+                'h1', 'h2', 'h3', 'h4',
+                'p',
+                'li',
+                'td'
+            ];
+            
+            document.querySelectorAll(searchableSelectors.join(', ')).forEach(element => {
+                // Skip if element is inside another indexed element to avoid duplicates
+                const parentCard = element.closest('.card, .info-box, .conflict-card');
+                if (parentCard && parentCard !== element) {
+                    return; // Skip nested elements, we'll search parent
+                }
+                
+                searchIndex.push({
+                    element: element,
+                    text: element.textContent.toLowerCase(),
+                    html: element.innerHTML,
+                    parent: element.parentElement,
+                    tab: element.closest('.tab-content')?.id || 'overview'
+                });
+            });
+        }
+
+        // Highlight matching text
+        function highlightText(element, searchTerm, originalHtml) {
+            if (!searchTerm) {
+                element.innerHTML = originalHtml;
+                return;
+            }
+            
+            // Create a temporary div to work with
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = originalHtml;
+            
+            // Highlight text in text nodes only
+            const walker = document.createTreeWalker(
+                tempDiv,
+                NodeFilter.SHOW_TEXT,
+                null,
+                false
+            );
+            
+            const nodesToReplace = [];
+            let node;
+            
+            while (node = walker.nextNode()) {
+                const text = node.textContent;
+                const lowerText = text.toLowerCase();
+                const searchLower = searchTerm.toLowerCase();
+                
+                if (lowerText.includes(searchLower)) {
+                    nodesToReplace.push(node);
+                }
+            }
+            
+            nodesToReplace.forEach(node => {
+                const text = node.textContent;
+                const lowerText = text.toLowerCase();
+                const searchLower = searchTerm.toLowerCase();
+                
+                let lastIndex = 0;
+                const fragment = document.createDocumentFragment();
+                let index = lowerText.indexOf(searchLower);
+                
+                while (index !== -1) {
+                    // Add text before match
+                    if (index > lastIndex) {
+                        fragment.appendChild(document.createTextNode(text.substring(lastIndex, index)));
+                    }
+                    
+                    // Add highlighted match
+                    const mark = document.createElement('mark');
+                    mark.style.backgroundColor = 'rgba(33, 128, 141, 0.3)';
+                    mark.style.padding = '2px 4px';
+                    mark.style.borderRadius = '3px';
+                    mark.style.fontWeight = '600';
+                    mark.textContent = text.substring(index, index + searchTerm.length);
+                    fragment.appendChild(mark);
+                    
+                    lastIndex = index + searchTerm.length;
+                    index = lowerText.indexOf(searchLower, lastIndex);
+                }
+                
+                // Add remaining text
+                if (lastIndex < text.length) {
+                    fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
+                }
+                
+                node.parentNode.replaceChild(fragment, node);
+            });
+            
+            element.innerHTML = tempDiv.innerHTML;
+        }
+
+        // Perform search
+        function performSearch(searchTerm) {
+            searchTerm = searchTerm.toLowerCase().trim();
+            
+            // Clear previous highlights
+            if (searchTerm === '') {
+                searchIndex.forEach(item => {
+                    item.element.style.display = '';
+                    item.element.innerHTML = item.html;
+                });
+                currentMatches = [];
+                updateSearchStatus('');
+                return;
+            }
+            
+            currentMatches = [];
+            let matchCount = 0;
+            
+            searchIndex.forEach(item => {
+                const matches = item.text.includes(searchTerm);
+                
+                if (matches) {
+                    matchCount++;
+                    currentMatches.push(item);
+                    item.element.style.display = '';
+                    highlightText(item.element, searchTerm, item.html);
+                } else {
+                    item.element.style.display = 'none';
+                    item.element.innerHTML = item.html;
+                }
+            });
+            
+            updateSearchStatus(searchTerm, matchCount);
+        }
+
+        // Update search status message
+        function updateSearchStatus(searchTerm, matchCount = 0) {
+            let statusDiv = document.getElementById('searchStatus');
+            
+            if (!statusDiv) {
+                statusDiv = document.createElement('div');
+                statusDiv.id = 'searchStatus';
+                statusDiv.style.cssText = `
+                    position: fixed;
+                    bottom: 20px;
+                    right: 20px;
+                    background-color: var(--color-surface);
+                    border: 1px solid var(--color-border);
+                    padding: 12px 20px;
+                    border-radius: var(--radius-base);
+                    box-shadow: var(--shadow-lg);
+                    font-size: var(--font-size-sm);
+                    font-weight: var(--font-weight-medium);
+                    z-index: 1000;
+                    transition: opacity 0.3s ease;
+                `;
+                document.body.appendChild(statusDiv);
+            }
+            
+            if (!searchTerm) {
+                statusDiv.style.opacity = '0';
+                setTimeout(() => {
+                    if (statusDiv.style.opacity === '0') {
+                        statusDiv.style.display = 'none';
+                    }
+                }, 300);
+                return;
+            }
+            
+            statusDiv.style.display = 'block';
+            statusDiv.style.opacity = '1';
+            
+            if (matchCount === 0) {
+                statusDiv.innerHTML = `<span style="color: var(--color-error);">⚠ No results found for "${searchTerm}"</span>`;
+            } else {
+                statusDiv.innerHTML = `<span style="color: var(--color-success);">✓ Found ${matchCount} result${matchCount !== 1 ? 's' : ''} for "${searchTerm}"</span>`;
+            }
+        }
+
+        // Initialize search
+        buildSearchIndex();
+
+        // Search with debouncing for better performance
+        let searchTimeout;
+        searchBox.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                performSearch(e.target.value);
+            }, 150);
+        });
+
+        // Add clear button functionality
+        searchBox.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                searchBox.value = '';
+                performSearch('');
+            }
+        });
+
+        // Print/Export functionality (simple version)
+        function exportChecklist() {
+            window.print();
+        }
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Ctrl/Cmd + K to focus search
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                searchBox.focus();
+            }
+        });
+
+        // ============================================
+        // NLP SEARCH ENGINE
+        // ============================================
+
+        // Knowledge Base for NLP Search
+        const knowledgeBase = {
+            consent: {
+                question: "How do I get user consent?",
+                answer: "Obtain free, specific, informed consent with clear affirmative action per DPDP Section 6. Each distinct purpose requires separate consent.",
+                keywords: ["consent", "approval", "permission", "agreement", "authorization", "opt-in", "acceptance"],
+                relatedObligations: ["LSP Obligation 1: Consent Management"],
+                sourceSections: ["DPDP Section 6", "RBI DLG Para 4"],
+                timeline: "Before any data processing",
+                actionItems: [
+                    "Build consent management platform",
+                    "Implement separate consent for each purpose",
+                    "Maintain audit trail of consents",
+                    "Provide easy withdrawal mechanism"
+                ],
+                tab: "lsp"
+            },
+            retention: {
+                question: "How long can we keep customer data?",
+                answer: "Delete data once purpose is fulfilled unless legally required. Minimum 1-year audit log retention. For lending: loan closure + regulatory retention period.",
+                keywords: ["retention", "delete", "keep", "storage", "duration", "destruction", "erasure", "how long"],
+                relatedObligations: ["LSP Obligation 3: Data Storage & Retention", "TSP Obligation 3: Access Logging"],
+                sourceSections: ["DPDP Section 8(2)", "DPDP Section 8(3)"],
+                timeline: "Immediate deletion after purpose ends; 1-year minimum for logs",
+                actionItems: [
+                    "Set automatic deletion policies",
+                    "Define retention period per data type",
+                    "Implement audit logging for 1 year",
+                    "Regular data purge reviews"
+                ],
+                tab: "lsp"
+            },
+            breach: {
+                question: "What happens if there's a data breach?",
+                answer: "Notify affected data principals immediately and inform Data Protection Board (DPB) within 72 hours with full incident details.",
+                keywords: ["breach", "incident", "violation", "unauthorized", "access", "data loss", "compromise", "hack", "leak"],
+                relatedObligations: ["LSP Obligation 5: Breach Notification", "TSP Obligation 6: Breach Response"],
+                sourceSections: ["DPDP Section 8(6)"],
+                timeline: "Immediately notify principals; 72 hours to notify DPB",
+                actionItems: [
+                    "Establish 24/7 incident response team",
+                    "Create breach notification template",
+                    "Set up DPB notification procedure",
+                    "Document all breach steps"
+                ],
+                tab: "lsp"
+            },
+            security: {
+                question: "What security measures do we need?",
+                answer: "Implement AES-256 encryption at rest, TLS 1.2+ in transit, access controls (RBAC, MFA), SIEM monitoring, and incident response capabilities.",
+                keywords: ["security", "encryption", "protection", "safeguards", "controls", "measures", "safe", "secure"],
+                relatedObligations: ["LSP Obligation 4: Security Safeguards", "TSP Obligation 2: Encryption Standards"],
+                sourceSections: ["DPDP Section 8(5)", "RBI DLG Para 13"],
+                timeline: "By 18-month enforcement deadline (May 2027)",
+                actionItems: [
+                    "Deploy encryption (AES-256, TLS 1.2+)",
+                    "Implement access controls (RBAC, MFA)",
+                    "Set up SIEM and monitoring",
+                    "Conduct penetration testing quarterly",
+                    "Maintain 1-year audit logs"
+                ],
+                tab: "tsp"
+            },
+            lsp_obligations: {
+                question: "What are my obligations as an LSP?",
+                answer: "8 core obligations: consent management, data minimization, retention, security, breach notification, privacy policy, grievance redressal, recovery compliance.",
+                keywords: ["LSP", "lending service provider", "obligations", "requirements", "duties", "responsibilities"],
+                relatedObligations: [
+                    "Consent Management",
+                    "Data Minimization",
+                    "Data Storage & Retention",
+                    "Security Safeguards",
+                    "Breach Notification",
+                    "Privacy Policy",
+                    "Grievance Redressal",
+                    "Recovery Operations Compliance"
+                ],
+                sourceSections: ["DPDP Sections 6-14", "RBI DLG Para 5"],
+                timeline: "Full compliance by May 13, 2027",
+                actionItems: [
+                    "Review all 8 obligations",
+                    "Create implementation plan for each",
+                    "Assign responsibility per obligation",
+                    "Set quarterly compliance reviews"
+                ],
+                tab: "lsp"
+            },
+            tsp_infrastructure: {
+                question: "What infrastructure must TSPs have?",
+                answer: "India-only data centers with AES-256 encryption, 24/7 monitoring, 1-year audit logs, and 3-2-1 backup rule (all in India).",
+                keywords: ["TSP", "technology service provider", "infrastructure", "data center", "servers", "hosting", "cloud"],
+                relatedObligations: [
+                    "Data Location - India Only",
+                    "Encryption Standards",
+                    "Access Logging & Audit Trails",
+                    "Backup & Disaster Recovery"
+                ],
+                sourceSections: ["DPDP Section 16", "RBI DLG Para 13(iv)"],
+                timeline: "By 18-month enforcement",
+                actionItems: [
+                    "Set up Indian data centers (Tier 1+ facilities)",
+                    "Implement HSM-based encryption",
+                    "Deploy SIEM for 24/7 monitoring",
+                    "Establish 3-2-1 backup sites in India",
+                    "Set up immutable 1-year audit logging"
+                ],
+                tab: "tsp"
+            },
+            penalties: {
+                question: "What are the penalties for non-compliance?",
+                answer: "₹5 crore or 2% revenue (non-compliance); ₹15 crore or 4% (serious); ₹150 crore or 6% (critical failures).",
+                keywords: ["penalty", "fine", "sanction", "punishment", "violation", "enforcement", "cost", "price"],
+                relatedObligations: [],
+                sourceSections: ["DPDP Sections 36-37"],
+                timeline: "Enforcement begins May 13, 2027",
+                actionItems: [
+                    "Ensure compliance by deadline",
+                    "Conduct compliance audits",
+                    "Document all compliance steps",
+                    "Set up DPB notification procedures"
+                ],
+                tab: "overview"
+            },
+            conflicts: {
+                question: "Where do DPDP and RBI guidelines conflict?",
+                answer: "8 key conflicts: data localization, retention, biometric data, fiduciary status, cross-border transfers, jurisdiction, data sharing, processing restrictions. Follow stricter requirement for each.",
+                keywords: ["conflict", "difference", "overlap", "contradiction", "alignment", "resolution", "versus", "vs"],
+                relatedObligations: [],
+                sourceSections: ["DPDP Act", "RBI DLG 2025"],
+                timeline: "Both apply simultaneously",
+                actionItems: [
+                    "Follow stricter requirement for each conflict",
+                    "Align contracts with both frameworks",
+                    "Review conflict resolution guide"
+                ],
+                tab: "analysis"
+            },
+            children_data: {
+                question: "How do I handle children's data?",
+                answer: "Obtain verifiable parental consent verified through identity documents or virtual tokens from authorized entities per DPDP Section 9.",
+                keywords: ["children", "minors", "kids", "parental", "consent", "young", "users", "age"],
+                relatedObligations: [],
+                sourceSections: ["DPDP Section 9", "DPDP Section 10"],
+                timeline: "Before processing any child's data",
+                actionItems: [
+                    "Implement age verification",
+                    "Set up parental consent flow",
+                    "Verify parent identity with government ID or virtual token",
+                    "Maintain consent audit trail"
+                ],
+                tab: "overview"
+            },
+            transfer: {
+                question: "Can we transfer data across borders?",
+                answer: "DPDP allows with safeguards; RBI prohibits for lending data. Follow stricter RBI requirement - all lending data must stay in India.",
+                keywords: ["transfer", "cross-border", "export", "international", "overseas", "movement", "abroad", "foreign"],
+                relatedObligations: ["TSP Obligation 4: Cross-border Processing"],
+                sourceSections: ["DPDP Section 16", "RBI DLG Para 13"],
+                timeline: "Evaluate before any transfer",
+                actionItems: [
+                    "Keep all lending data in India",
+                    "If non-lending data: use safeguards, consent, DPIA",
+                    "Set up data repatriation for cross-border processing",
+                    "Document all transfer justifications"
+                ],
+                tab: "analysis"
+            }
+        };
+
+        // Common question suggestions
+        const commonQuestions = [
+            "How do I get user consent?",
+            "What security measures do we need?",
+            "What happens if there's a data breach?",
+            "How long can we keep customer data?",
+            "What are my obligations as an LSP?",
+            "What infrastructure must TSPs have?",
+            "What are the penalties for non-compliance?",
+            "Where do DPDP and RBI guidelines conflict?",
+            "Can we transfer data across borders?",
+            "How do I handle children's data?",
+            "When must I delete data?",
+            "What encryption do we need?",
+            "Who is responsible for data protection?",
+            "How do I handle a security incident?",
+            "What are the differences between DPDP and RBI?"
+        ];
+
+        // NLP Search Engine
+        const nlpSearchBox = document.getElementById('nlpSearchBox');
+        const nlpSearchButton = document.getElementById('nlpSearchButton');
+        const nlpSearchResults = document.getElementById('nlpSearchResults');
+        const nlpSearchSuggestions = document.getElementById('nlpSearchSuggestions');
+
+        // Intent patterns for classification
+        const intentPatterns = [
+            { pattern: /how (do|to|can).*(?:get|obtain|implement|handle|manage)/i, type: 'procedural' },
+            { pattern: /what.*(?:required|need|must|should|obligation|requirement)/i, type: 'requirement' },
+            { pattern: /when.*(?:deadline|must|should|time)/i, type: 'timeline' },
+            { pattern: /(?:difference|conflict|versus|vs|compare)/i, type: 'comparison' },
+            { pattern: /(?:penalty|fine|sanction|punish)/i, type: 'enforcement' },
+            { pattern: /where.*(?:conflict|differ|align)/i, type: 'comparison' }
+        ];
+
+        // Detect query intent
+        function detectIntent(query) {
+            for (const { pattern, type } of intentPatterns) {
+                if (pattern.test(query)) {
+                    return type;
+                }
+            }
+            return 'general';
+        }
+
+        // Semantic matching function
+        function semanticMatch(query, keywords) {
+            const queryWords = query.toLowerCase().split(/\s+/);
+            let matchScore = 0;
+            
+            for (const keyword of keywords) {
+                const keywordWords = keyword.toLowerCase().split(/\s+/);
+                for (const queryWord of queryWords) {
+                    for (const keywordWord of keywordWords) {
+                        if (queryWord.includes(keywordWord) || keywordWord.includes(queryWord)) {
+                            matchScore++;
+                        }
+                    }
+                }
+            }
+            
+            return matchScore;
+        }
+
+        // Search knowledge base
+        function searchKnowledgeBase(query) {
+            const intent = detectIntent(query);
+            const results = [];
+
+            for (const [key, entry] of Object.entries(knowledgeBase)) {
+                const matchScore = semanticMatch(query, [...entry.keywords, entry.question]);
+                
+                if (matchScore > 0) {
+                    let relevance = 'low';
+                    if (matchScore >= 3) relevance = 'high';
+                    else if (matchScore >= 2) relevance = 'medium';
+                    
+                    results.push({
+                        ...entry,
+                        relevance,
+                        matchScore,
+                        intent
+                    });
+                }
+            }
+
+            // Sort by match score (highest first)
+            results.sort((a, b) => b.matchScore - a.matchScore);
+            
+            return results;
+        }
+
+        // Render search results
+        function renderSearchResults(results, query) {
+            if (results.length === 0) {
+                nlpSearchResults.innerHTML = `
+                    <div class="no-results-message">
+                        <p>No results found for "${query}"</p>
+                        <p style="margin-top: 16px; font-size: 14px;">Try asking about consent, security, penalties, LSP/TSP obligations, or conflicts.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            
+            results.forEach(result => {
+                html += `
+                    <div class="nlp-result-card">
+                        <div class="nlp-result-header">
+                            <h3 class="nlp-result-title">${result.question}</h3>
+                            <span class="relevance-badge relevance-${result.relevance}">${result.relevance} relevance</span>
+                        </div>
+                        
+                        <div class="nlp-answer-section">
+                            <div class="nlp-answer-text">${result.answer}</div>
+                        </div>
+                        
+                        <div class="nlp-source-section">
+                            <div class="nlp-section-label">Source Sections</div>
+                            <div class="nlp-source-tags">
+                                ${result.sourceSections.map(section => `<span class="nlp-source-tag">${section}</span>`).join('')}
+                            </div>
+                        </div>
+                        
+                        ${result.relatedObligations.length > 0 ? `
+                            <div class="nlp-source-section">
+                                <div class="nlp-section-label">Related Obligations</div>
+                                <div class="nlp-source-tags">
+                                    ${result.relatedObligations.map(obl => `<span class="nlp-source-tag">${obl}</span>`).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+                        
+                        ${result.timeline ? `
+                            <div class="nlp-timeline-info">
+                                <strong>⏱ Timeline:</strong> <span class="nlp-timeline-text">${result.timeline}</span>
+                            </div>
+                        ` : ''}
+                        
+                        ${result.actionItems.length > 0 ? `
+                            <div class="nlp-source-section">
+                                <div class="nlp-section-label">Action Items</div>
+                                <ul class="nlp-action-items">
+                                    ${result.actionItems.map(item => `<li class="nlp-action-item">${item}</li>`).join('')}
+                                </ul>
+                            </div>
+                        ` : ''}
+                        
+                        <div style="margin-top: 16px;">
+                            <a href="#" class="nlp-learn-more" onclick="event.preventDefault(); switchToTab('${result.tab}');">Learn More →</a>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            nlpSearchResults.innerHTML = html;
+        }
+
+        // Switch to specific tab
+        function switchToTab(tabName) {
+            const tabButton = document.querySelector(`[data-tab="${tabName}"]`);
+            if (tabButton) {
+                tabButton.click();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Perform NLP search
+        function performNLPSearch() {
+            const query = nlpSearchBox.value.trim();
+            
+            if (!query) {
+                nlpSearchResults.innerHTML = '';
+                return;
+            }
+            
+            const results = searchKnowledgeBase(query);
+            renderSearchResults(results, query);
+        }
+
+        // Show suggestions as user types
+        function showSuggestions(query) {
+            if (!query || query.length < 3) {
+                nlpSearchSuggestions.classList.remove('visible');
+                return;
+            }
+            
+            const matches = commonQuestions.filter(q => 
+                q.toLowerCase().includes(query.toLowerCase())
+            ).slice(0, 5);
+            
+            if (matches.length === 0) {
+                nlpSearchSuggestions.classList.remove('visible');
+                return;
+            }
+            
+            let html = '';
+            matches.forEach(question => {
+                html += `
+                    <div class="nlp-suggestion-item" onclick="selectSuggestion('${question.replace(/'/g, "\\'")}'')">
+                        <div class="nlp-suggestion-title">${question}</div>
+                    </div>
+                `;
+            });
+            
+            nlpSearchSuggestions.innerHTML = html;
+            nlpSearchSuggestions.classList.add('visible');
+        }
+
+        // Select a suggestion
+        function selectSuggestion(question) {
+            nlpSearchBox.value = question;
+            nlpSearchSuggestions.classList.remove('visible');
+            performNLPSearch();
+        }
+
+        // Event listeners for NLP search
+        if (nlpSearchButton) {
+            nlpSearchButton.addEventListener('click', performNLPSearch);
+        }
+
+        if (nlpSearchBox) {
+            nlpSearchBox.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    performNLPSearch();
+                }
+            });
+            
+            nlpSearchBox.addEventListener('input', (e) => {
+                showSuggestions(e.target.value);
+            });
+            
+            // Hide suggestions when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!nlpSearchBox.contains(e.target) && !nlpSearchSuggestions.contains(e.target)) {
+                    nlpSearchSuggestions.classList.remove('visible');
+                }
+            });
+        }
+
+        // Example query buttons
+        document.querySelectorAll('.example-query-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const query = btn.getAttribute('data-query');
+                nlpSearchBox.value = query;
+                performNLPSearch();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Global search box suggestions
+        const headerSearchBox = document.getElementById('searchBox');
+        const headerSearchSuggestions = document.querySelector('.search-suggestions');
+
+        if (headerSearchBox) {
+            headerSearchBox.addEventListener('input', (e) => {
+                const query = e.target.value;
+                
+                if (!query || query.length < 3) {
+                    if (headerSearchSuggestions) {
+                        headerSearchSuggestions.classList.remove('visible');
+                    }
+                    return;
+                }
+                
+                const matches = commonQuestions.filter(q => 
+                    q.toLowerCase().includes(query.toLowerCase())
+                ).slice(0, 5);
+                
+                if (matches.length === 0 || !headerSearchSuggestions) {
+                    if (headerSearchSuggestions) {
+                        headerSearchSuggestions.classList.remove('visible');
+                    }
+                    return;
+                }
+                
+                let html = '';
+                matches.forEach(question => {
+                    html += `
+                        <div class="nlp-suggestion-item" onclick="navigateToSearch('${question.replace(/'/g, "\\'")}'')">
+                            <div class="nlp-suggestion-title">${question}</div>
+                        </div>
+                    `;
+                });
+                
+                headerSearchSuggestions.innerHTML = html;
+                headerSearchSuggestions.classList.add('visible');
+            });
+            
+            // Hide suggestions when clicking outside
+            document.addEventListener('click', (e) => {
+                if (headerSearchSuggestions && !headerSearchBox.contains(e.target) && !headerSearchSuggestions.contains(e.target)) {
+                    headerSearchSuggestions.classList.remove('visible');
+                }
+            });
+        }
+
+        // Navigate to search tab with query
+        function navigateToSearch(question) {
+            // Switch to search tab
+            const searchTabButton = document.querySelector('[data-tab="search"]');
+            if (searchTabButton) {
+                searchTabButton.click();
+            }
+            
+            // Set query and perform search
+            if (nlpSearchBox) {
+                nlpSearchBox.value = question;
+                performNLPSearch();
+            }
+            
+            // Hide suggestions
+            if (headerSearchSuggestions) {
+                headerSearchSuggestions.classList.remove('visible');
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
